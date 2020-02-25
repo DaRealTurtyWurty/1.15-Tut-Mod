@@ -1,0 +1,8 @@
+{
+	"replace": false,
+	"values": [
+		"tutorialmod:example_item",
+		"tutorialmod:test_item",
+		"minecraft:apple"
+	]
+}

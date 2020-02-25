@@ -1,0 +1,7 @@
+{
+	"replace": false,
+	"values": [
+		"tutorialmod:example_block",
+		"minecraft:cactus"
+	]
+}

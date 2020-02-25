@@ -1,0 +1,20 @@
+{
+	"item.tutorialmod.example_item": "Example Item",
+	"item.tutorialmod.test_item": "Test Item",
+	
+	"item.tutorialmod.example_sword": "Example Sword",
+	"item.tutorialmod.example_pickaxe": "Example Pickaxe",
+	"item.tutorialmod.example_shovel": "Example Shovel",
+	"item.tutorialmod.example_axe": "Example Axe",
+	"item.tutorialmod.example_hoe": "Example Hoe",
+	
+	"item.tutorialmod.test_helmet": "Test Helmet",
+	"item.tutorialmod.test_chestplate": "Test Chestplate",
+	"item.tutorialmod.test_leggings": "Test Leggings",
+	"item.tutorialmod.test_boots": "Test Boots",
+	
+	"block.tutorialmod.example_block": "Example Block",
+	"block.tutorialmod.specal_block": "Specal Block",
+	
+	"itemGroup.tutorialtab": "Tutorial Tab"
+}
