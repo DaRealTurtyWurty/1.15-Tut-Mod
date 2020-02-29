@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "IiI",
+    "i i",
+    "III"
+  ],
+  "key": {
+    "I": {
+      "item": "tutorialmod:example_shovel"
+    },
+    "i": {
+      "tag": "forge:ingots/gold"
+    }
+  },
+  "result": {
+    "item": "minecraft:dragon_egg"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "minecraft:apple"
+    },
+    {
+      "item": "tutorialmod:example_item"
+    }
+  ],
+  "result": {
+    "item": "tutorialmod:example_hoe"
+  }
+}
