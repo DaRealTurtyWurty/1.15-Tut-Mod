@@ -5,6 +5,8 @@ import java.util.stream.Stream;
 
 import com.turtywurty.tutorialmod.TutorialMod;
 import com.turtywurty.tutorialmod.TutorialMod.TutorialItemGroup;
+import com.turtywurty.tutorialmod.objects.blocks.BlockQuarry;
+import com.turtywurty.tutorialmod.objects.blocks.ModCropBlock;
 import com.turtywurty.tutorialmod.objects.blocks.SpecalBlock;
 
 import it.unimi.dsi.fastutil.objects.ObjectArraySet;
@@ -29,6 +31,7 @@ import net.minecraftforge.registries.ObjectHolder;
 public class BlockInit {
 	public static final Block example_block = null;
 	public static final Block specal_block = null;
+	public static final Block quarry = null;
 
 	@SubscribeEvent
 	public static void registerBlocks(final RegistryEvent.Register<Block> event) {
@@ -40,9 +43,13 @@ public class BlockInit {
 				.register(new SpecalBlock(Block.Properties.create(Material.IRON).hardnessAndResistance(2.0f, 10.0f)
 						.harvestLevel(2).harvestTool(ToolType.PICKAXE).sound(SoundType.GLASS).lightValue(4)
 						.slipperiness(1.2f).speedFactor(0.7f).noDrops()).setRegistryName("specal_block"));
+		event.getRegistry()
+				.register(new ModCropBlock(Block.Properties.create(Material.ORGANIC), ItemInit.special_item, 5)
+						.setRegistryName("test_crop"));
 		// event.getRegistry().register(new
 		// BlockTest(Block.Properties.create(Material.WOOD).hardnessAndResistance(1.5f,
 		// 18.0f).sound(SoundType.WOOD).harvestLevel(1).harvestTool(ToolType.AXE)));
+		event.getRegistry().register(new BlockQuarry(Block.Properties.create(Material.IRON)).setRegistryName("quarry"));
 	}
 
 	@SubscribeEvent
@@ -53,6 +60,8 @@ public class BlockInit {
 		event.getRegistry()
 				.register(new BlockItem(specal_block, new Item.Properties().group(TutorialItemGroup.instance))
 						.setRegistryName("specal_block"));
+		event.getRegistry().register(new BlockItem(quarry, new Item.Properties().group(TutorialItemGroup.instance))
+				.setRegistryName("quarry"));
 		// event.getRegistry().register(new BlockItem(test_block, new
 		// Item.Properties().group(TutorialItemGroup.instance)).setRegistryName("test_block"));
 	}

@@ -4,6 +4,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import com.turtywurty.tutorialmod.init.BlockInit;
+import com.turtywurty.tutorialmod.init.ModTileEntityTypes;
 import com.turtywurty.tutorialmod.world.gen.TutorialOreGen;
 
 import net.minecraft.item.ItemGroup;
@@ -32,6 +33,8 @@ public class TutorialMod
     	final IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
     	modEventBus.addListener(this::setup);
     	modEventBus.addListener(this::doClientStuff);
+    	
+    	ModTileEntityTypes.TILE_ENTITY_TYPES.register(modEventBus);
         
         instance = this;
         MinecraftForge.EVENT_BUS.register(this);
@@ -61,7 +64,7 @@ public class TutorialMod
     
     public static class TutorialItemGroup extends ItemGroup 
     {
-    	public static final TutorialItemGroup instance = new TutorialItemGroup(ItemGroup.GROUPS.length, "tutorialtab");
+    	public static final ItemGroup instance = new TutorialItemGroup(ItemGroup.GROUPS.length, "tutorialtab");
     	
     	private TutorialItemGroup(int index, String label)
     	{

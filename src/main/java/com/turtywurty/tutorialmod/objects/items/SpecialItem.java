@@ -22,74 +22,63 @@ import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.common.IExtensibleEnum;
 
-public class SpecialItem extends Item
-{
-	public SpecialItem(Properties properties) 
-	{
+public class SpecialItem extends Item {
+	public SpecialItem(Properties properties) {
 		super(properties);
 	}
-	
+
 	@Override
-	public void addInformation(ItemStack stack, World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) 
-	{
-		if(KeyboardHelper.isHoldingShift())
-		{
+	public void addInformation(ItemStack stack, World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
+		if (KeyboardHelper.isHoldingShift()) {
 			tooltip.add(new StringTextComponent("Test Information"));
 		} else {
 			tooltip.add(new StringTextComponent("Hold" + "\u00A7e" + " Shift " + "\u00A77" + "for more information!"));
 		}
 		super.addInformation(stack, worldIn, tooltip, flagIn);
 	}
-	
+
 	@Override
 	public Item asItem() {
 		return super.asItem();
 	}
-	
+
 	@Override
-	public boolean canApplyAtEnchantingTable(ItemStack stack, Enchantment enchantment)
-	{
-		if(enchantment.isAllowedOnBooks() && stack.hasEffect()) 
-		{
+	public boolean canApplyAtEnchantingTable(ItemStack stack, Enchantment enchantment) {
+		if (enchantment.isAllowedOnBooks() && stack.hasEffect()) {
 			return true;
 		}
 		return false;
 	}
-	
+
 	@Override
 	public Rarity getRarity(ItemStack stack) {
-		// TODO Auto-generated method stub
-		return super.getRarity(stack);
+		return Rarity.create("test", TextFormatting.DARK_RED);
 	}
-	
-	//
+
 	@Override
-	public boolean hasEffect(ItemStack stack) 
-	{
+	public boolean hasEffect(ItemStack stack) {
 		return true;
 	}
-	
+
 	@Override
-	public ActionResult<ItemStack> onItemRightClick(World worldIn, PlayerEntity playerIn, Hand handIn) 
-	{
+	public ActionResult<ItemStack> onItemRightClick(World worldIn, PlayerEntity playerIn, Hand handIn) {
 		playerIn.addPotionEffect(new EffectInstance(Effects.ABSORPTION, 500, 255));
 		worldIn.setRainStrength(1.0f);
+		
 		return super.onItemRightClick(worldIn, playerIn, handIn);
 	}
-	
+
 	@Override
-	public boolean onEntityItemUpdate(ItemStack stack, ItemEntity entity) 
-	{
+	public boolean onEntityItemUpdate(ItemStack stack, ItemEntity entity) {
 		entity.getEntityWorld().setBlockState(entity.getPosition().down(), BlockInit.example_block.getDefaultState());
 		return super.onEntityItemUpdate(stack, entity);
 	}
-	
+
 	@Override
-	public int getBurnTime(ItemStack itemStack) 
-	{
+	public int getBurnTime(ItemStack itemStack) {
 		return 600;
 	}
-	
+
 	public enum ModRarity implements IExtensibleEnum {
 		TEST(TextFormatting.DARK_RED);
 
