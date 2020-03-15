@@ -16,5 +16,11 @@
 	"block.tutorialmod.example_block": "Example Block",
 	"block.tutorialmod.specal_block": "Specal Block",
 	
-	"itemGroup.tutorialtab": "Tutorial Tab"
+	"block.tutorialmod.example_button": "Example Button",
+	"block.tutorialmod.example_stairs": "Example Stairs",
+	"block.tutorialmod.example_pressure_plate": "Example Pressure Plate",
+	"block.tutorialmod.example_fence": "Example Fence",
+	
+	"itemGroup.tutorialtab": "Tutorial Tab",
+	"generator.example_world": "Example"
 }

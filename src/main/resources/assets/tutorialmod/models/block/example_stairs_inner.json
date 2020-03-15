@@ -1,0 +1,8 @@
+{
+    "parent": "block/inner_stairs",
+    "textures": {
+        "bottom": "tutorialmod:blocks/example_block",
+        "top": "tutorialmod:blocks/example_block",
+        "side": "tutorialmod:blocks/example_block"
+    }
+}

@@ -3,6 +3,8 @@ package com.turtywurty.tutorialmod.objects.items;
 import java.util.List;
 
 import com.turtywurty.tutorialmod.init.BlockInit;
+import com.turtywurty.tutorialmod.init.BlockInitNew;
+import com.turtywurty.tutorialmod.init.ItemInitNew;
 import com.turtywurty.tutorialmod.util.helpers.KeyboardHelper;
 
 import net.minecraft.client.util.ITooltipFlag;
@@ -11,10 +13,12 @@ import net.minecraft.entity.item.ItemEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.ItemUseContext;
 import net.minecraft.item.Rarity;
 import net.minecraft.potion.EffectInstance;
 import net.minecraft.potion.Effects;
 import net.minecraft.util.ActionResult;
+import net.minecraft.util.ActionResultType;
 import net.minecraft.util.Hand;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.StringTextComponent;
@@ -91,5 +95,24 @@ public class SpecialItem extends Item {
 		public static ModRarity create(String name, TextFormatting format) {
 			throw new IllegalStateException("Enum not extended");
 		}
+	}
+	
+	@SuppressWarnings("resource")
+	@Override
+	public ActionResultType onItemUse(ItemUseContext context) {
+		if(context.getWorld().getBlockState(context.getPos()).getBlock() == BlockInitNew.DEF_BLOCK.get()) {
+			for(ItemStack stack : context.getPlayer().inventory.mainInventory) {
+				if(stack.isEmpty()) {
+					context.getPlayer().addItemStackToInventory(new ItemStack(ItemInitNew.DEF_ITEM.get()));
+					context.getItem().damageItem(1, context.getPlayer(), (playerIn) -> {
+						playerIn.sendBreakAnimation(context.getHand());
+					});
+					return ActionResultType.SUCCESS;
+				}
+			}
+			context.getWorld().addEntity(new ItemEntity(context.getWorld(), context.getPos().getX(), context.getPos().getY(), context.getPos().getZ(), new ItemStack(ItemInitNew.DEF_ITEM.get())));
+			return ActionResultType.SUCCESS;
+		}
+		return ActionResultType.FAIL;
 	}
 }

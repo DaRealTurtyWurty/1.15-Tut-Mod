@@ -26,11 +26,6 @@ description='''
 	Hello, This is a description, and I do not know what to write here!
 '''
 
-
-
-
-
-
 [[dependencies.tutorialmod]] #optional
     # the modid of the dependency
     modId="forge" #mandatory
