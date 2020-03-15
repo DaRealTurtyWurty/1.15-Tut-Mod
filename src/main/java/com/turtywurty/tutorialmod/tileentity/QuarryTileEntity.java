@@ -15,7 +15,6 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.fluid.IFluidState;
 import net.minecraft.inventory.container.Container;
-import net.minecraft.inventory.container.INamedContainerProvider;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.tileentity.ITickableTileEntity;
@@ -29,42 +28,7 @@ import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.items.ItemStackHandler;
 
-public class QuarryTileEntity extends TileEntity implements ITickableTileEntity, INamedContainerProvider {
-	
-	public final ItemStackHandler inventory = new ItemStackHandler(27) 
-	{
-		@Override
-		public boolean isItemValid(final int slot, @Nonnull final ItemStack stack) 
-		{
-			return true;
-		}
-		
-		@Override
-		protected void onContentsChanged(final int slot) 
-		{
-			super.onContentsChanged(slot);
-			QuarryTileEntity.this.markDirty();
-		}
-	};
-	
-	private final LazyOptional<ItemStackHandler> inventoryCapabilityExternal = LazyOptional.of(() -> this.inventory);
-	
-	@Override
-	public <T> LazyOptional<T> getCapability(Capability<T> cap, Direction side) {
-		return super.getCapability(cap, side);
-	}
-
-	@Override
-	public Container createMenu(int menu, PlayerInventory playerInv, PlayerEntity player) {
-		return null;
-	}
-
-	@Override
-	public ITextComponent getDisplayName() {
-		return null;
-	}
-	
-	
+public class QuarryTileEntity extends TileEntity implements ITickableTileEntity {
 
 	public int x, y, z, tick;
 	boolean initialized = false;
@@ -104,8 +68,6 @@ public class QuarryTileEntity extends TileEntity implements ITickableTileEntity,
 				blocksRemoved[index] = this.world.getBlockState(posToBreak).getBlock();
 				destroyBlock(posToBreak, true, null);
 				index++;
-				
-				this.markDirty();
 			}
 		}
 		this.y--;
@@ -119,16 +81,7 @@ public class QuarryTileEntity extends TileEntity implements ITickableTileEntity,
 			world.playEvent(2001, pos, Block.getStateId(blockstate));
 			if(dropBlock) {
 				TileEntity tileentity = blockstate.hasTileEntity() ? world.getTileEntity(pos) : null;
-				
-				List<ItemStack> drops = Block.getDrops(blockstate, (ServerWorld)world, pos, tileentity);
-				for(ItemStack stack : drops) {
-					int slot = 0;
-					for(int i = 0; i < this.inventory.getSlots(); i++) {
-						if(this.inventory.isItemValid(i, stack)) slot = i;
-					}
-					this.inventory.insertItem(slot, stack, false);
-				}
-				
+				Block.spawnDrops(blockstate, world, this.pos.add(0, 1.5, 0), tileentity, entity, ItemStack.EMPTY);
 			}
 			return world.setBlockState(pos, ifluidstate.getBlockState(), 3);
 		}
