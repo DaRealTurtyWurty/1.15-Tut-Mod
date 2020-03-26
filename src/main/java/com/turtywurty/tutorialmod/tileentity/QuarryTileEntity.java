@@ -58,8 +58,6 @@ public class QuarryTileEntity extends TileEntity implements ITickableTileEntity 
 				blocksRemoved[index] = this.world.getBlockState(posToBreak).getBlock();
 				destroyBlock(posToBreak, true, null);
 				index++;
-
-				this.markDirty();
 			}
 		}
 		this.y--;
@@ -74,7 +72,6 @@ public class QuarryTileEntity extends TileEntity implements ITickableTileEntity 
 			world.playEvent(2001, pos, Block.getStateId(blockstate));
 			if (dropBlock) {
 				TileEntity tileentity = blockstate.hasTileEntity() ? world.getTileEntity(pos) : null;
-
 				Block.spawnDrops(blockstate, world, this.pos.add(0, 1.5, 0), tileentity, entity, ItemStack.EMPTY);
 			}
 			return world.setBlockState(pos, ifluidstate.getBlockState(), 3);
