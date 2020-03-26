@@ -25,3 +25,5 @@ public class TutorialOreGen {
 		}
 	}
 }
+
+//OreFeatureConfig.FillerBlockType.create("end_stone", null, new BlockMatcher(Blocks.END_STONE))

@@ -28,12 +28,14 @@ public class BiomeInit {
 									BlockInitNew.DEF_BLOCK.get().getDefaultState(),
 									Blocks.ACACIA_PLANKS.getDefaultState()))
 					.category(Category.PLAINS).downfall(0.5f).depth(0.12f).parent(null)));
-	
+
 	public static void registerBiomes() {
 		registerBiome(EXAMPLE_BIOME.get(), Type.PLAINS, Type.OVERWORLD);
 	}
-	
+
 	private static void registerBiome(Biome biome, Type... types) {
+		//the line below will make it spawn in the overworld
+		BiomeManager.addBiome(BiomeManager.BiomeType.COOL, new BiomeManager.BiomeEntry(biome, 100));
 		BiomeDictionary.addTypes(biome, types);
 		BiomeManager.addSpawnBiome(biome);
 	}
