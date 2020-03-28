@@ -1,6 +1,8 @@
 {
 	"item.tutorialmod.example_item": "Example Item",
 	"item.tutorialmod.test_item": "Test Item",
+	"item.tutorialmod.special_item": "Special Item",
+	"item.tutorialmod.def_item": "Deferred Item",
 	
 	"item.tutorialmod.example_sword": "Example Sword",
 	"item.tutorialmod.example_pickaxe": "Example Pickaxe",
@@ -15,12 +17,21 @@
 	
 	"block.tutorialmod.example_block": "Example Block",
 	"block.tutorialmod.specal_block": "Specal Block",
-	
 	"block.tutorialmod.example_button": "Example Button",
 	"block.tutorialmod.example_stairs": "Example Stairs",
 	"block.tutorialmod.example_pressure_plate": "Example Pressure Plate",
 	"block.tutorialmod.example_fence": "Example Fence",
+	"block.tutorialmod.example_chest": "Example Chest",
+	"block.tutorialmod.def_block": "Deferred Block",
+	"block.tutorialmod.quarry": "\u00A76Quarry",
+	"block.tutorialmod.jazz_planks": "Jazz Planks",
+	"block.tutorialmod.jazz_log": "Jazz Log",
+	"block.tutorialmod.jazz_sapling": "Jazz Sapling",
+	"block.tutorialmod.jazz_leaves": "Jazz Leaves",
+	
+	"container.example_chest": "Example Chest",
 	
 	"itemGroup.tutorialtab": "Tutorial Tab",
+	
 	"generator.example_world": "Example"
 }
