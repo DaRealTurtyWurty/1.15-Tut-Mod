@@ -27,6 +27,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.IExtensibleEnum;
 
 public class SpecialItem extends Item {
+	
 	public SpecialItem(Properties properties) {
 		super(properties);
 	}
@@ -68,7 +69,7 @@ public class SpecialItem extends Item {
 	public ActionResult<ItemStack> onItemRightClick(World worldIn, PlayerEntity playerIn, Hand handIn) {
 		playerIn.addPotionEffect(new EffectInstance(Effects.ABSORPTION, 500, 255));
 		worldIn.setRainStrength(1.0f);
-		
+
 		return super.onItemRightClick(worldIn, playerIn, handIn);
 	}
 
@@ -96,13 +97,12 @@ public class SpecialItem extends Item {
 			throw new IllegalStateException("Enum not extended");
 		}
 	}
-	
-	@SuppressWarnings("resource")
+
 	@Override
 	public ActionResultType onItemUse(ItemUseContext context) {
-		if(context.getWorld().getBlockState(context.getPos()).getBlock() == BlockInitNew.DEF_BLOCK.get()) {
-			for(ItemStack stack : context.getPlayer().inventory.mainInventory) {
-				if(stack.isEmpty()) {
+		if (context.getWorld().getBlockState(context.getPos()).getBlock() == BlockInitNew.DEF_BLOCK.get()) {
+			for (ItemStack stack : context.getPlayer().inventory.mainInventory) {
+				if (stack.isEmpty()) {
 					context.getPlayer().addItemStackToInventory(new ItemStack(ItemInitNew.DEF_ITEM.get()));
 					context.getItem().damageItem(1, context.getPlayer(), (playerIn) -> {
 						playerIn.sendBreakAnimation(context.getHand());
@@ -110,7 +110,8 @@ public class SpecialItem extends Item {
 					return ActionResultType.SUCCESS;
 				}
 			}
-			context.getWorld().addEntity(new ItemEntity(context.getWorld(), context.getPos().getX(), context.getPos().getY(), context.getPos().getZ(), new ItemStack(ItemInitNew.DEF_ITEM.get())));
+			context.getWorld().addEntity(new ItemEntity(context.getWorld(), context.getPos().getX(),
+					context.getPos().getY(), context.getPos().getZ(), new ItemStack(ItemInitNew.DEF_ITEM.get())));
 			return ActionResultType.SUCCESS;
 		}
 		return ActionResultType.FAIL;

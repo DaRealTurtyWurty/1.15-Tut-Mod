@@ -14,7 +14,6 @@ import net.minecraft.item.HoeItem;
 import net.minecraft.item.IArmorMaterial;
 import net.minecraft.item.IItemTier;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemGroup;
 import net.minecraft.item.PickaxeItem;
 import net.minecraft.item.ShovelItem;
 import net.minecraft.item.SwordItem;
@@ -55,7 +54,7 @@ public class ItemInit {
 	@SubscribeEvent
 	public static void registerItems(final RegistryEvent.Register<Item> event) {
 		event.getRegistry()
-				.register(new Item(new Item.Properties().group(ItemGroup.MISC)).setRegistryName("example_item"));
+				.register(new Item(new Item.Properties().group(TutorialItemGroup.instance)/*.group(ItemGroup.MISC)*/).setRegistryName("example_item"));
 		event.getRegistry()
 				.register(new Item(new Item.Properties().group(TutorialItemGroup.instance)
 						.food(new Food.Builder().hunger(6).saturation(1.2f)
