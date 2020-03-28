@@ -1,0 +1,7 @@
+{
+    "parent": "block/cube_column",
+    "textures": {
+        "end": "tutorialmod:blocks/jazz_log_top",
+        "side": "tutorialmod:blocks/jazz_log"
+    }
+}

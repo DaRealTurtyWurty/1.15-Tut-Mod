@@ -1,0 +1,6 @@
+{
+    "parent": "block/cross",
+    "textures": {
+        "cross": "tutorialmod:blocks/jazz_sapling"
+    }
+}
