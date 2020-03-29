@@ -9,6 +9,7 @@ import com.turtywurty.tutorialmod.init.BlockInitNew;
 import com.turtywurty.tutorialmod.init.DimensionInit;
 import com.turtywurty.tutorialmod.init.ItemInitNew;
 import com.turtywurty.tutorialmod.init.ModContainerTypes;
+import com.turtywurty.tutorialmod.init.ModEntityTypes;
 import com.turtywurty.tutorialmod.init.ModTileEntityTypes;
 import com.turtywurty.tutorialmod.world.gen.TutorialOreGen;
 //import com.turtywurty.tutorialmod.world.worldtype.ExampleWorldType;
@@ -51,6 +52,7 @@ public class TutorialMod {
 		BlockInitNew.BLOCKS.register(modEventBus);
 		ModTileEntityTypes.TILE_ENTITY_TYPES.register(modEventBus);
 		ModContainerTypes.CONTAINER_TYPES.register(modEventBus);
+		ModEntityTypes.ENTITY_TYPES.register(modEventBus);
 
 		BiomeInit.BIOMES.register(modEventBus);
 		DimensionInit.MOD_DIMENSIONS.register(modEventBus);
