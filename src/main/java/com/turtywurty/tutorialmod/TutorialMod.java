@@ -11,6 +11,8 @@ import com.turtywurty.tutorialmod.init.ItemInitNew;
 import com.turtywurty.tutorialmod.init.ModContainerTypes;
 import com.turtywurty.tutorialmod.init.ModEntityTypes;
 import com.turtywurty.tutorialmod.init.ModTileEntityTypes;
+import com.turtywurty.tutorialmod.init.SoundInit;
+import com.turtywurty.tutorialmod.objects.blocks.ModCropBlock;
 import com.turtywurty.tutorialmod.world.gen.TutorialOreGen;
 //import com.turtywurty.tutorialmod.world.worldtype.ExampleWorldType;
 
@@ -48,6 +50,7 @@ public class TutorialMod {
 		final IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 		modEventBus.addListener(this::setup);
 
+		SoundInit.SOUNDS.register(modEventBus);
 		ItemInitNew.ITEMS.register(modEventBus);
 		BlockInitNew.BLOCKS.register(modEventBus);
 		ModTileEntityTypes.TILE_ENTITY_TYPES.register(modEventBus);
@@ -65,12 +68,13 @@ public class TutorialMod {
 	public static void onRegisterItems(final RegistryEvent.Register<Item> event) {
 		final IForgeRegistry<Item> registry = event.getRegistry();
 
-		BlockInitNew.BLOCKS.getEntries().stream().map(RegistryObject::get).forEach(block -> {
-			final Item.Properties properties = new Item.Properties().group(TutorialItemGroup.instance);
-			final BlockItem blockItem = new BlockItem(block, properties);
-			blockItem.setRegistryName(block.getRegistryName());
-			registry.register(blockItem);
-		});
+		BlockInitNew.BLOCKS.getEntries().stream().filter(block -> !(block.get() instanceof ModCropBlock))
+				.map(RegistryObject::get).forEach(block -> {
+					final Item.Properties properties = new Item.Properties().group(TutorialItemGroup.instance);
+					final BlockItem blockItem = new BlockItem(block, properties);
+					blockItem.setRegistryName(block.getRegistryName());
+					registry.register(blockItem);
+				});
 
 		LOGGER.debug("Registered BlockItems!");
 	}

@@ -1,0 +1,12 @@
+{
+	"entity.example_entity.ambient": {
+		"category": "entity",
+		"subtitle": "entity.example_entity.ambient",
+		"sounds": [
+			{
+				"name": "tutorialmod:entity/entity.example_entity.ambient",
+				"stream": true
+			}
+		]
+	}
+}
