@@ -2,6 +2,7 @@ package com.turtywurty.tutorialmod.init;
 
 import com.turtywurty.tutorialmod.TutorialMod;
 import com.turtywurty.tutorialmod.objects.blocks.ExampleChestBlock;
+import com.turtywurty.tutorialmod.objects.blocks.ExampleCrop;
 import com.turtywurty.tutorialmod.objects.blocks.ModPressurePlateBlock;
 import com.turtywurty.tutorialmod.objects.blocks.ModSaplingBlock;
 import com.turtywurty.tutorialmod.objects.blocks.ModWoodButtonBlock;
@@ -13,6 +14,7 @@ import net.minecraft.block.FenceBlock;
 import net.minecraft.block.LeavesBlock;
 import net.minecraft.block.LogBlock;
 import net.minecraft.block.PressurePlateBlock.Sensitivity;
+import net.minecraft.block.SlabBlock;
 import net.minecraft.block.StairsBlock;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.material.MaterialColor;
@@ -53,4 +55,10 @@ public class BlockInitNew {
 
 	public static final RegistryObject<Block> JAZZ_SAPLING = BLOCKS.register("jazz_sapling",
 			() -> new ModSaplingBlock(() -> new JazzTree(), Block.Properties.from(Blocks.OAK_SAPLING)));
+
+	public static final RegistryObject<Block> EXAMPLE_CROP = BLOCKS.register("example_crop",
+			() -> new ExampleCrop(Block.Properties.from(Blocks.WHEAT)));
+
+	public static final RegistryObject<Block> JAZZ_SLAB = BLOCKS.register("jazz_slab",
+			() -> new SlabBlock(Block.Properties.from(BlockInitNew.JAZZ_PLANKS.get())));
 }

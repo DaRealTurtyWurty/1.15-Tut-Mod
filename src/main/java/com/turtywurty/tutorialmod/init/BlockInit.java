@@ -6,7 +6,6 @@ import java.util.stream.Stream;
 import com.turtywurty.tutorialmod.TutorialMod;
 import com.turtywurty.tutorialmod.TutorialMod.TutorialItemGroup;
 import com.turtywurty.tutorialmod.objects.blocks.BlockQuarry;
-import com.turtywurty.tutorialmod.objects.blocks.ModCropBlock;
 import com.turtywurty.tutorialmod.objects.blocks.SpecalBlock;
 
 import it.unimi.dsi.fastutil.objects.ObjectArraySet;
@@ -43,9 +42,6 @@ public class BlockInit {
 				.register(new SpecalBlock(Block.Properties.create(Material.IRON).hardnessAndResistance(2.0f, 10.0f)
 						.harvestLevel(2).harvestTool(ToolType.PICKAXE).sound(SoundType.GLASS).lightValue(4)
 						.slipperiness(1.2f).speedFactor(0.7f).noDrops()).setRegistryName("specal_block"));
-		event.getRegistry()
-				.register(new ModCropBlock(Block.Properties.create(Material.ORGANIC), ItemInit.special_item, 5)
-						.setRegistryName("test_crop"));
 		// event.getRegistry().register(new
 		// BlockTest(Block.Properties.create(Material.WOOD).hardnessAndResistance(1.5f,
 		// 18.0f).sound(SoundType.WOOD).harvestLevel(1).harvestTool(ToolType.AXE)));

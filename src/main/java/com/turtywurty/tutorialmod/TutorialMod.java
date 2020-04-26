@@ -11,11 +11,13 @@ import com.turtywurty.tutorialmod.init.ItemInitNew;
 import com.turtywurty.tutorialmod.init.ModContainerTypes;
 import com.turtywurty.tutorialmod.init.ModEntityTypes;
 import com.turtywurty.tutorialmod.init.ModTileEntityTypes;
+import com.turtywurty.tutorialmod.init.PotionInit;
 import com.turtywurty.tutorialmod.init.SoundInit;
-import com.turtywurty.tutorialmod.objects.blocks.ModCropBlock;
+import com.turtywurty.tutorialmod.objects.blocks.ExampleCrop;
 import com.turtywurty.tutorialmod.world.gen.TutorialOreGen;
 //import com.turtywurty.tutorialmod.world.worldtype.ExampleWorldType;
 
+import net.minecraft.block.ComposterBlock;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
@@ -51,6 +53,8 @@ public class TutorialMod {
 		modEventBus.addListener(this::setup);
 
 		SoundInit.SOUNDS.register(modEventBus);
+		PotionInit.POTIONS.register(modEventBus);
+		PotionInit.POTION_EFFECTS.register(modEventBus);
 		ItemInitNew.ITEMS.register(modEventBus);
 		BlockInitNew.BLOCKS.register(modEventBus);
 		ModTileEntityTypes.TILE_ENTITY_TYPES.register(modEventBus);
@@ -68,7 +72,7 @@ public class TutorialMod {
 	public static void onRegisterItems(final RegistryEvent.Register<Item> event) {
 		final IForgeRegistry<Item> registry = event.getRegistry();
 
-		BlockInitNew.BLOCKS.getEntries().stream().filter(block -> !(block.get() instanceof ModCropBlock))
+		BlockInitNew.BLOCKS.getEntries().stream().filter(block -> !(block.get() instanceof ExampleCrop))
 				.map(RegistryObject::get).forEach(block -> {
 					final Item.Properties properties = new Item.Properties().group(TutorialItemGroup.instance);
 					final BlockItem blockItem = new BlockItem(block, properties);
@@ -84,8 +88,9 @@ public class TutorialMod {
 		BiomeInit.registerBiomes();
 	}
 
-	private void setup(final FMLCommonSetupEvent event) {
-
+	private void setup(final FMLCommonSetupEvent event) {// K9#8016
+		ComposterBlock.registerCompostable(0.6f, BlockInitNew.JAZZ_LEAVES.get());
+		ComposterBlock.registerCompostable(0.4f, ItemInitNew.SEED_ITEM.get());
 	}
 
 	@SubscribeEvent

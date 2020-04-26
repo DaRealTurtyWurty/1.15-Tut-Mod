@@ -6,6 +6,7 @@ import com.turtywurty.tutorialmod.entities.ExampleEntity;
 
 import net.minecraft.client.renderer.entity.model.EntityModel;
 import net.minecraft.client.renderer.model.ModelRenderer;
+import net.minecraft.util.math.MathHelper;
 
 public class ExampleEntityModel<T extends ExampleEntity> extends EntityModel<T> {
 	private final ModelRenderer Body;
@@ -35,33 +36,33 @@ public class ExampleEntityModel<T extends ExampleEntity> extends EntityModel<T> 
 		Legs.addChild(Back);
 
 		RightBack = new ModelRenderer(this);
-		RightBack.setRotationPoint(0.0F, 0.0F, 0.0F);
+		RightBack.setRotationPoint(-5.0F, 2.0F, 7.0F);
 		Back.addChild(RightBack);
-		RightBack.setTextureOffset(0, 0).addBox(-6.0F, 2.0F, 6.0F, 2, 6, 2, 0.0F, false);
+		RightBack.setTextureOffset(0, 0).addBox(-1.0F, 0.0F, -1.0F, 2, 6, 2, 0.0F, false);
 
 		LeftBack = new ModelRenderer(this);
-		LeftBack.setRotationPoint(0.0F, 0.0F, 0.0F);
+		LeftBack.setRotationPoint(5.0F, 2.0F, 7.0F);
 		Back.addChild(LeftBack);
-		LeftBack.setTextureOffset(6, 6).addBox(4.0F, 2.0F, 6.0F, 2, 6, 2, 0.0F, false);
+		LeftBack.setTextureOffset(6, 6).addBox(-1.0F, 0.0F, -1.0F, 2, 6, 2, 0.0F, false);
 
 		Front = new ModelRenderer(this);
 		Front.setRotationPoint(0.0F, 0.0F, 0.0F);
 		Legs.addChild(Front);
 
 		RightFront = new ModelRenderer(this);
-		RightFront.setRotationPoint(0.0F, 0.0F, 0.0F);
+		RightFront.setRotationPoint(-5.0F, 2.0F, -9.0F);
 		Front.addChild(RightFront);
-		RightFront.setTextureOffset(24, 26).addBox(-6.0F, 2.0F, -10.0F, 2, 6, 2, 0.0F, false);
+		RightFront.setTextureOffset(24, 26).addBox(-1.0F, 0.0F, -1.0F, 2, 6, 2, 0.0F, false);
 
 		LeftFront = new ModelRenderer(this);
-		LeftFront.setRotationPoint(0.0F, 0.0F, 0.0F);
+		LeftFront.setRotationPoint(5.0F, 2.0F, -9.0F);
 		Front.addChild(LeftFront);
-		LeftFront.setTextureOffset(30, 32).addBox(4.0F, 2.0F, -10.0F, 2, 6, 2, 0.0F, false);
+		LeftFront.setTextureOffset(30, 32).addBox(-1.0F, 0.0F, -1.0F, 2, 6, 2, 0.0F, false);
 
 		Head = new ModelRenderer(this);
-		Head.setRotationPoint(0.0F, 0.0F, 0.0F);
+		Head.setRotationPoint(0.0F, -5.0F, -10.0F);
 		Body.addChild(Head);
-		Head.setTextureOffset(0, 26).addBox(-3.0F, -9.0F, -16.0F, 6, 6, 6, 0.0F, false);
+		Head.setTextureOffset(0, 26).addBox(-3.0F, -4.0F, -6.0F, 6, 6, 6, 0.0F, false);
 	}
 
 	@Override
@@ -73,7 +74,13 @@ public class ExampleEntityModel<T extends ExampleEntity> extends EntityModel<T> 
 	@Override
 	public void setRotationAngles(T entityIn, float limbSwing, float limbSwingAmount, float ageInTicks,
 			float netHeadYaw, float headPitch) {
-
+		this.Head.rotateAngleX = headPitch * ((float) Math.PI / 180F);
+		this.Head.rotateAngleY = netHeadYaw * ((float) Math.PI / 180F);
+		//this.Body.rotateAngleZ = ((float)Math.PI / 2F);
+		this.RightBack.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount;
+		this.LeftBack.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F + (float) Math.PI) * 1.4F * limbSwingAmount;
+		this.RightFront.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F + (float) Math.PI) * 1.4F * limbSwingAmount;
+		this.LeftFront.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount;
 	}
 
 	public void setRotationAngle(ModelRenderer modelRenderer, float x, float y, float z) {
@@ -81,7 +88,7 @@ public class ExampleEntityModel<T extends ExampleEntity> extends EntityModel<T> 
 		modelRenderer.rotateAngleY = y;
 		modelRenderer.rotateAngleZ = z;
 	}
-	
+
 	@Override
 	public void setLivingAnimations(T entityIn, float limbSwing, float limbSwingAmount, float partialTick) {
 		super.setLivingAnimations(entityIn, limbSwing, limbSwingAmount, partialTick);

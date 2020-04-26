@@ -24,6 +24,7 @@ public class ClientEventBusSubscriber {
 	public static void clientSetup(FMLClientSetupEvent event) {
 		ScreenManager.registerFactory(ModContainerTypes.EXAMPLE_CHEST.get(), ExampleChestScreen::new);
 		RenderTypeLookup.setRenderLayer(BlockInitNew.JAZZ_SAPLING.get(), RenderType.getCutout());
+		RenderTypeLookup.setRenderLayer(BlockInitNew.EXAMPLE_CROP.get(), RenderType.getCutout());
 		RenderingRegistry.registerEntityRenderingHandler(ModEntityTypes.EXAMPLE_ENTITY.get(), ExampleEntityRender::new);
 	}
 }

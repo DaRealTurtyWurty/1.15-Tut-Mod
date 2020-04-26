@@ -28,10 +28,18 @@
 	"block.tutorialmod.jazz_log": "Jazz Log",
 	"block.tutorialmod.jazz_sapling": "Jazz Sapling",
 	"block.tutorialmod.jazz_leaves": "Jazz Leaves",
+	"block.tutorialmod.jazz_slab": "Jazz Slab",
+	"block.tutorialmod.example_crop": "Example Seeds",
 	
 	"container.example_chest": "Example Chest",
 	
 	"itemGroup.tutorialtab": "Tutorial Tab",
 	
-	"generator.example_world": "Example"
+	"generator.example_world": "Example",
+	
+	"effect.tutorialmod.example_effect": "Example Effect",
+	"item.tutorialmod.potion.example_effect": "Potion of Example",
+	"item.tutorialmod.splash_potion.example_effect": "Splash Potion of Example",
+	"item.tutorialmod.lingering_potion.example_effect": "Lingering Potion of Example",
+	"item.tutorialmod.tipped_arrow.example_effect": "Arrow of Example"
 }

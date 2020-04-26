@@ -1,5 +1,6 @@
 package com.turtywurty.tutorialmod.world.biomes;
 
+import com.turtywurty.tutorialmod.init.ModBiomeFeatures;
 import com.turtywurty.tutorialmod.world.feature.JazzTree;
 
 import net.minecraft.entity.EntityClassification;
@@ -49,6 +50,7 @@ public class ExampleBiome extends Biome {
 		DefaultBiomeFeatures.addOres(this);
 		DefaultBiomeFeatures.addExtraGoldOre(this);
 		DefaultBiomeFeatures.addExtraEmeraldOre(this);
+		ModBiomeFeatures.addExampleFeature(this, 10);
 	}
 }
 

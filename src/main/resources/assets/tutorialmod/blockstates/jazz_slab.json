@@ -1,0 +1,7 @@
+{
+    "variants": {
+        "type=bottom": { "model": "tutorialmod:block/jazz_slab" },
+        "type=top": { "model": "tutorialmod:block/jazz_slab_top" },
+        "type=double": { "model": "tutorialmod:block/jazz_planks" }
+    }
+}

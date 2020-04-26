@@ -54,7 +54,8 @@ public class ItemInit {
 	@SubscribeEvent
 	public static void registerItems(final RegistryEvent.Register<Item> event) {
 		event.getRegistry()
-				.register(new Item(new Item.Properties().group(TutorialItemGroup.instance)/*.group(ItemGroup.MISC)*/).setRegistryName("example_item"));
+				.register(new Item(new Item.Properties().group(TutorialItemGroup.instance)/* .group(ItemGroup.MISC) */)
+						.setRegistryName("example_item"));
 		event.getRegistry()
 				.register(new Item(new Item.Properties().group(TutorialItemGroup.instance)
 						.food(new Food.Builder().hunger(6).saturation(1.2f)

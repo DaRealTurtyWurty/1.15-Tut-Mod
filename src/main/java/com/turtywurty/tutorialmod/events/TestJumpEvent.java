@@ -15,7 +15,7 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 //I have this commented out beause it gets kinda laggy xd.
 //@Mod.EventBusSubscriber(modid = TutorialMod.MOD_ID, bus = Bus.FORGE)
 public class TestJumpEvent {
-	
+
 	@SubscribeEvent
 	public static void testJumpEvent(LivingJumpEvent event) {
 		TutorialMod.LOGGER.info("testJumpEvent fired");
@@ -27,4 +27,3 @@ public class TestJumpEvent {
 		livingEntity.setGlowing(true);
 	}
 }
-

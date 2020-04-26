@@ -1,0 +1,8 @@
+{
+    "parent": "block/slab",
+    "textures": {
+        "bottom": "tutorialmod:blocks/jazz_planks",
+        "top": "tutorialmod:blocks/jazz_planks",
+        "side": "tutorialmod:blocks/jazz_planks"
+    }
+}
