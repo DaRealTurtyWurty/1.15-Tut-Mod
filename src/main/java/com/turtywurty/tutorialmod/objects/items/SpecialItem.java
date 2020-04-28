@@ -3,8 +3,7 @@ package com.turtywurty.tutorialmod.objects.items;
 import java.util.List;
 
 import com.turtywurty.tutorialmod.init.BlockInit;
-import com.turtywurty.tutorialmod.init.BlockInitNew;
-import com.turtywurty.tutorialmod.init.ItemInitNew;
+import com.turtywurty.tutorialmod.init.ItemInit;
 import com.turtywurty.tutorialmod.util.helpers.KeyboardHelper;
 
 import net.minecraft.client.util.ITooltipFlag;
@@ -75,7 +74,7 @@ public class SpecialItem extends Item {
 
 	@Override
 	public boolean onEntityItemUpdate(ItemStack stack, ItemEntity entity) {
-		entity.getEntityWorld().setBlockState(entity.getPosition().down(), BlockInit.example_block.getDefaultState());
+		entity.getEntityWorld().setBlockState(entity.getPosition().down(), BlockInit.EXAMPLE_BLOCK.get().getDefaultState());
 		return super.onEntityItemUpdate(stack, entity);
 	}
 
@@ -100,10 +99,10 @@ public class SpecialItem extends Item {
 
 	@Override
 	public ActionResultType onItemUse(ItemUseContext context) {
-		if (context.getWorld().getBlockState(context.getPos()).getBlock() == BlockInitNew.DEF_BLOCK.get()) {
+		if (context.getWorld().getBlockState(context.getPos()).getBlock() == BlockInit.DEF_BLOCK.get()) {
 			for (ItemStack stack : context.getPlayer().inventory.mainInventory) {
 				if (stack.isEmpty()) {
-					context.getPlayer().addItemStackToInventory(new ItemStack(ItemInitNew.DEF_ITEM.get()));
+					context.getPlayer().addItemStackToInventory(new ItemStack(ItemInit.DEF_ITEM.get()));
 					context.getItem().damageItem(1, context.getPlayer(), (playerIn) -> {
 						playerIn.sendBreakAnimation(context.getHand());
 					});
@@ -111,7 +110,7 @@ public class SpecialItem extends Item {
 				}
 			}
 			context.getWorld().addEntity(new ItemEntity(context.getWorld(), context.getPos().getX(),
-					context.getPos().getY(), context.getPos().getZ(), new ItemStack(ItemInitNew.DEF_ITEM.get())));
+					context.getPos().getY(), context.getPos().getZ(), new ItemStack(ItemInit.DEF_ITEM.get())));
 			return ActionResultType.SUCCESS;
 		}
 		return ActionResultType.FAIL;

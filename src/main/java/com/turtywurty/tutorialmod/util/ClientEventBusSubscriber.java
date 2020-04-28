@@ -3,7 +3,7 @@ package com.turtywurty.tutorialmod.util;
 import com.turtywurty.tutorialmod.TutorialMod;
 import com.turtywurty.tutorialmod.client.entity.render.ExampleEntityRender;
 import com.turtywurty.tutorialmod.client.gui.ExampleChestScreen;
-import com.turtywurty.tutorialmod.init.BlockInitNew;
+import com.turtywurty.tutorialmod.init.BlockInit;
 import com.turtywurty.tutorialmod.init.ModContainerTypes;
 import com.turtywurty.tutorialmod.init.ModEntityTypes;
 
@@ -23,8 +23,8 @@ public class ClientEventBusSubscriber {
 	@SubscribeEvent
 	public static void clientSetup(FMLClientSetupEvent event) {
 		ScreenManager.registerFactory(ModContainerTypes.EXAMPLE_CHEST.get(), ExampleChestScreen::new);
-		RenderTypeLookup.setRenderLayer(BlockInitNew.JAZZ_SAPLING.get(), RenderType.getCutout());
-		RenderTypeLookup.setRenderLayer(BlockInitNew.EXAMPLE_CROP.get(), RenderType.getCutout());
+		RenderTypeLookup.setRenderLayer(BlockInit.JAZZ_SAPLING.get(), RenderType.getCutout());
+		RenderTypeLookup.setRenderLayer(BlockInit.EXAMPLE_CROP.get(), RenderType.getCutout());
 		RenderingRegistry.registerEntityRenderingHandler(ModEntityTypes.EXAMPLE_ENTITY.get(), ExampleEntityRender::new);
 	}
 }

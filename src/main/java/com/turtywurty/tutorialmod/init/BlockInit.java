@@ -1,90 +1,79 @@
 package com.turtywurty.tutorialmod.init;
 
-import java.util.Set;
-import java.util.stream.Stream;
-
 import com.turtywurty.tutorialmod.TutorialMod;
-import com.turtywurty.tutorialmod.TutorialMod.TutorialItemGroup;
 import com.turtywurty.tutorialmod.objects.blocks.BlockQuarry;
+import com.turtywurty.tutorialmod.objects.blocks.ExampleChestBlock;
+import com.turtywurty.tutorialmod.objects.blocks.ExampleCrop;
+import com.turtywurty.tutorialmod.objects.blocks.ModPressurePlateBlock;
+import com.turtywurty.tutorialmod.objects.blocks.ModSaplingBlock;
+import com.turtywurty.tutorialmod.objects.blocks.ModWoodButtonBlock;
 import com.turtywurty.tutorialmod.objects.blocks.SpecalBlock;
+import com.turtywurty.tutorialmod.world.feature.JazzTree;
 
-import it.unimi.dsi.fastutil.objects.ObjectArraySet;
 import net.minecraft.block.Block;
+import net.minecraft.block.Blocks;
+import net.minecraft.block.FenceBlock;
+import net.minecraft.block.LeavesBlock;
+import net.minecraft.block.LogBlock;
+import net.minecraft.block.PressurePlateBlock.Sensitivity;
+import net.minecraft.block.SlabBlock;
 import net.minecraft.block.SoundType;
-import net.minecraft.block.WoodType;
+import net.minecraft.block.StairsBlock;
 import net.minecraft.block.material.Material;
-import net.minecraft.item.BlockItem;
-import net.minecraft.item.Item;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
+import net.minecraft.block.material.MaterialColor;
 import net.minecraftforge.common.ToolType;
-//import net.minecraftforge.common.ToolType;
-import net.minecraftforge.event.RegistryEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.common.Mod.EventBusSubscriber.Bus;
-import net.minecraftforge.registries.ObjectHolder;
+import net.minecraftforge.fml.RegistryObject;
+import net.minecraftforge.registries.DeferredRegister;
+import net.minecraftforge.registries.ForgeRegistries;
 
-@ObjectHolder(TutorialMod.MOD_ID)
-@Mod.EventBusSubscriber(modid = TutorialMod.MOD_ID, bus = Bus.MOD)
 public class BlockInit {
-	public static final Block example_block = null;
-	public static final Block specal_block = null;
-	public static final Block quarry = null;
 
-	@SubscribeEvent
-	public static void registerBlocks(final RegistryEvent.Register<Block> event) {
-		event.getRegistry()
-				.register(new Block(
-						Block.Properties.create(Material.IRON).hardnessAndResistance(0.5f, 15.0f).sound(SoundType.SAND))
-								.setRegistryName("example_block"));
-		event.getRegistry()
-				.register(new SpecalBlock(Block.Properties.create(Material.IRON).hardnessAndResistance(2.0f, 10.0f)
-						.harvestLevel(2).harvestTool(ToolType.PICKAXE).sound(SoundType.GLASS).lightValue(4)
-						.slipperiness(1.2f).speedFactor(0.7f).noDrops()).setRegistryName("specal_block"));
-		// event.getRegistry().register(new
-		// BlockTest(Block.Properties.create(Material.WOOD).hardnessAndResistance(1.5f,
-		// 18.0f).sound(SoundType.WOOD).harvestLevel(1).harvestTool(ToolType.AXE)));
-		event.getRegistry().register(new BlockQuarry(Block.Properties.create(Material.IRON)).setRegistryName("quarry"));
-	}
+	public static final DeferredRegister<Block> BLOCKS = new DeferredRegister<>(ForgeRegistries.BLOCKS,
+			TutorialMod.MOD_ID);
 
-	@SubscribeEvent
-	public static void registerBlockItems(final RegistryEvent.Register<Item> event) {
-		event.getRegistry().register(
-				new BlockItem(example_block, new Item.Properties().maxStackSize(16).group(TutorialItemGroup.instance))
-						.setRegistryName("example_block"));
-		event.getRegistry()
-				.register(new BlockItem(specal_block, new Item.Properties().group(TutorialItemGroup.instance))
-						.setRegistryName("specal_block"));
-		event.getRegistry().register(new BlockItem(quarry, new Item.Properties().group(TutorialItemGroup.instance))
-				.setRegistryName("quarry"));
-		// event.getRegistry().register(new BlockItem(test_block, new
-		// Item.Properties().group(TutorialItemGroup.instance)).setRegistryName("test_block"));
-	}
+	public static final RegistryObject<Block> EXAMPLE_BLOCK = BLOCKS.register("example_block", () -> new Block(
+			Block.Properties.create(Material.IRON).hardnessAndResistance(0.5f, 15.0f).sound(SoundType.SAND)));
 
-	public static class ModWoodType extends WoodType {
-		private static final Set<WoodType> VALUES = new ObjectArraySet<>();
-		public static final ModWoodType TEST = register(new ModWoodType("test"));
-		private String name;
+	public static final RegistryObject<Block> SPECAL_BLOCK = BLOCKS.register("specal_block",
+			() -> new SpecalBlock(Block.Properties.create(Material.IRON).hardnessAndResistance(2.0f, 10.0f)
+					.harvestLevel(2).harvestTool(ToolType.PICKAXE).sound(SoundType.GLASS).lightValue(4)
+					.slipperiness(1.2f).speedFactor(0.7f).noDrops()));
 
-		public ModWoodType(String nameIn) {
-			super(nameIn);
-			this.name = nameIn;
-		}
+	public static final RegistryObject<Block> QUARRY = BLOCKS.register("quarry",
+			() -> new BlockQuarry(Block.Properties.create(Material.IRON)));
 
-		private static ModWoodType register(ModWoodType woodTypeIn) {
-			VALUES.add(woodTypeIn);
-			return woodTypeIn;
-		}
+	public static final RegistryObject<Block> DEF_BLOCK = BLOCKS.register("def_block",
+			() -> new Block(Block.Properties.create(Material.IRON)));
 
-		@OnlyIn(Dist.CLIENT)
-		public static Stream<WoodType> getValues() {
-			return VALUES.stream();
-		}
+	public static final RegistryObject<Block> EXAMPLE_STAIRS = BLOCKS.register("example_stairs",
+			() -> new StairsBlock(() -> BlockInit.EXAMPLE_BLOCK.get().getDefaultState(),
+					Block.Properties.create(Material.SAND, MaterialColor.GOLD)));
+	public static final RegistryObject<Block> EXAMPLE_FENCE = BLOCKS.register("example_fence",
+			() -> new FenceBlock(Block.Properties.create(Material.SAND, MaterialColor.GOLD)));
+	public static final RegistryObject<Block> EXAMPLE_BUTTON = BLOCKS.register("example_button",
+			() -> new ModWoodButtonBlock(Block.Properties.create(Material.SAND, MaterialColor.GOLD)));
+	public static final RegistryObject<Block> EXAMPLE_PRESSURE_PLATE = BLOCKS.register("example_pressure_plate",
+			() -> new ModPressurePlateBlock(Sensitivity.EVERYTHING,
+					Block.Properties.create(Material.SAND, MaterialColor.GOLD)));
 
-		@OnlyIn(Dist.CLIENT)
-		public String getName() {
-			return this.name;
-		}
-	}
+	public static final RegistryObject<Block> EXAMPLE_CHEST = BLOCKS.register("example_chest",
+			() -> new ExampleChestBlock(Block.Properties.from(BlockInit.DEF_BLOCK.get())));
+
+	public static final RegistryObject<Block> JAZZ_PLANKS = BLOCKS.register("jazz_planks",
+			() -> new Block(Block.Properties.from(Blocks.OAK_PLANKS)));
+
+	public static final RegistryObject<Block> JAZZ_LOG = BLOCKS.register("jazz_log",
+			() -> new LogBlock(MaterialColor.WOOD, Block.Properties.from(Blocks.OAK_LOG)));
+
+	public static final RegistryObject<Block> JAZZ_LEAVES = BLOCKS.register("jazz_leaves",
+			() -> new LeavesBlock(Block.Properties.from(Blocks.OAK_LEAVES)));
+
+	public static final RegistryObject<Block> JAZZ_SAPLING = BLOCKS.register("jazz_sapling",
+			() -> new ModSaplingBlock(() -> new JazzTree(), Block.Properties.from(Blocks.OAK_SAPLING)));
+
+	public static final RegistryObject<Block> JAZZ_SLAB = BLOCKS.register("jazz_slab",
+			() -> new SlabBlock(Block.Properties.from(BlockInit.JAZZ_PLANKS.get())));
+
+	public static final RegistryObject<Block> EXAMPLE_CROP = BLOCKS.register("example_crop",
+			() -> new ExampleCrop(Block.Properties.from(Blocks.WHEAT)));
 }

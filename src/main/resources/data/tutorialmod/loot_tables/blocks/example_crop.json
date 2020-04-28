@@ -18,11 +18,11 @@
                   }
                 }
               ],
-              "name": "tutorialmod:example_crop"
+              "name": "tutorialmod:def_item"
             },
             {
               "type": "minecraft:item",
-              "name": "tutorialmod:seeds_item"
+              "name": "tutorialmod:seed_item"
             }
           ]
         }
@@ -44,7 +44,7 @@
               }
             }
           ],
-          "name": "tutorialmod:seeds_item"
+          "name": "tutorialmod:seed_item"
         }
       ],
       "conditions": [

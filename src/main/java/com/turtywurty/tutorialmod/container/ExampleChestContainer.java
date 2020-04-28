@@ -2,7 +2,7 @@ package com.turtywurty.tutorialmod.container;
 
 import java.util.Objects;
 
-import com.turtywurty.tutorialmod.init.BlockInitNew;
+import com.turtywurty.tutorialmod.init.BlockInit;
 import com.turtywurty.tutorialmod.init.ModContainerTypes;
 import com.turtywurty.tutorialmod.tileentity.ExampleChestTileEntity;
 
@@ -70,7 +70,7 @@ public class ExampleChestContainer extends Container {
 
 	@Override
 	public boolean canInteractWith(PlayerEntity playerIn) {
-		return isWithinUsableDistance(canInteractWithCallable, playerIn, BlockInitNew.EXAMPLE_CHEST.get());
+		return isWithinUsableDistance(canInteractWithCallable, playerIn, BlockInit.EXAMPLE_CHEST.get());
 	}
 
 	@Override

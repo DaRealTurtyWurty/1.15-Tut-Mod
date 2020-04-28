@@ -2,7 +2,7 @@ package com.turtywurty.tutorialmod.world.feature;
 
 import java.util.Random;
 
-import com.turtywurty.tutorialmod.init.BlockInitNew;
+import com.turtywurty.tutorialmod.init.BlockInit;
 
 import net.minecraft.block.trees.Tree;
 import net.minecraft.world.gen.blockstateprovider.SimpleBlockStateProvider;
@@ -15,10 +15,10 @@ import net.minecraftforge.common.IPlantable;
 public class JazzTree extends Tree {
 
 	public static final TreeFeatureConfig JAZZ_TREE_CONFIG = (new TreeFeatureConfig.Builder(
-			new SimpleBlockStateProvider(BlockInitNew.JAZZ_LOG.get().getDefaultState()),
-			new SimpleBlockStateProvider(BlockInitNew.JAZZ_LEAVES.get().getDefaultState()),
+			new SimpleBlockStateProvider(BlockInit.JAZZ_LOG.get().getDefaultState()),
+			new SimpleBlockStateProvider(BlockInit.JAZZ_LEAVES.get().getDefaultState()),
 			new BlobFoliagePlacer(3, 0))).baseHeight(14).heightRandA(5).foliageHeight(9).ignoreVines()
-					.setSapling((IPlantable) BlockInitNew.JAZZ_SAPLING.get()).build();
+					.setSapling((IPlantable) BlockInit.JAZZ_SAPLING.get()).build();
 
 	@Override
 	protected ConfiguredFeature<TreeFeatureConfig, ?> getTreeFeature(Random randomIn, boolean b) {

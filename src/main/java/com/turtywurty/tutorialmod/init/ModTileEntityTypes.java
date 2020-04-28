@@ -15,9 +15,9 @@ public class ModTileEntityTypes {
 			ForgeRegistries.TILE_ENTITIES, TutorialMod.MOD_ID);
 
 	public static final RegistryObject<TileEntityType<QuarryTileEntity>> QUARRY = TILE_ENTITY_TYPES.register("quarry",
-			() -> TileEntityType.Builder.create(QuarryTileEntity::new, BlockInit.quarry).build(null));
+			() -> TileEntityType.Builder.create(QuarryTileEntity::new, BlockInit.QUARRY.get()).build(null));
 
 	public static final RegistryObject<TileEntityType<ExampleChestTileEntity>> EXAMPLE_CHEST = TILE_ENTITY_TYPES
 			.register("example_chest", () -> TileEntityType.Builder
-					.create(ExampleChestTileEntity::new, BlockInitNew.EXAMPLE_CHEST.get()).build(null));
+					.create(ExampleChestTileEntity::new, BlockInit.EXAMPLE_CHEST.get()).build(null));
 }

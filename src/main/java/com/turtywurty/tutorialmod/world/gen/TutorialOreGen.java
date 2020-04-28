@@ -1,6 +1,6 @@
 package com.turtywurty.tutorialmod.world.gen;
 
-import com.turtywurty.tutorialmod.init.BlockInitNew;
+import com.turtywurty.tutorialmod.init.BlockInit;
 
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.Biomes;
@@ -19,7 +19,7 @@ public class TutorialOreGen {
 				ConfiguredPlacement customConfig = Placement.COUNT_RANGE
 						.configure(new CountRangeConfig(20, 5, 5, 25));
 				biome.addFeature(GenerationStage.Decoration.UNDERGROUND_ORES, Feature.ORE
-					.withConfiguration(new OreFeatureConfig(OreFeatureConfig.FillerBlockType.NATURAL_STONE, BlockInitNew.DEF_BLOCK.get().getDefaultState(), 10))
+					.withConfiguration(new OreFeatureConfig(OreFeatureConfig.FillerBlockType.NATURAL_STONE, BlockInit.DEF_BLOCK.get().getDefaultState(), 10))
 					.withPlacement(customConfig));
 			}
 		}

@@ -1,6 +1,6 @@
 package com.turtywurty.tutorialmod.entities;
 
-import com.turtywurty.tutorialmod.init.ItemInitNew;
+import com.turtywurty.tutorialmod.init.ItemInit;
 import com.turtywurty.tutorialmod.init.ModEntityTypes;
 import com.turtywurty.tutorialmod.init.SoundInit;
 
@@ -56,7 +56,7 @@ public class ExampleEntity extends AnimalEntity {
 		this.goalSelector.addGoal(1, new PanicGoal(this, 1.25D));
 		this.goalSelector.addGoal(2, new BreedGoal(this, 1.0D));
 		this.goalSelector.addGoal(3,
-				new TemptGoal(this, 1.1D, Ingredient.fromItems(ItemInitNew.DEF_ITEM.get()), false));
+				new TemptGoal(this, 1.1D, Ingredient.fromItems(ItemInit.DEF_ITEM.get()), false));
 		this.goalSelector.addGoal(4, new FollowParentGoal(this, 1.1D));
 		this.goalSelector.addGoal(5, this.eatGrassGoal);
 		this.goalSelector.addGoal(6, new WaterAvoidingRandomWalkingGoal(this, 1.0D));

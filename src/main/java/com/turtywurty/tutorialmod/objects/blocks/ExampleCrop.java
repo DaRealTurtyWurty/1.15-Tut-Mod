@@ -1,6 +1,6 @@
 package com.turtywurty.tutorialmod.objects.blocks;
 
-import com.turtywurty.tutorialmod.init.ItemInitNew;
+import com.turtywurty.tutorialmod.init.ItemInit;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -13,34 +13,27 @@ import net.minecraft.world.IBlockReader;
 
 public class ExampleCrop extends CropsBlock {
 
-	private static final VoxelShape[] SHAPES = new VoxelShape[] {
-			Block.makeCuboidShape(0.0d, 0.0d, 0.0d, 16.0d, 2.0d, 16.0d),
-			Block.makeCuboidShape(0.0d, 0.0d, 0.0d, 16.0d, 3.0d, 16.0d),
-			Block.makeCuboidShape(0.0d, 0.0d, 0.0d, 16.0d, 4.0d, 16.0d),
-			Block.makeCuboidShape(0.0d, 0.0d, 0.0d, 16.0d, 5.0d, 16.0d),
-			Block.makeCuboidShape(0.0d, 0.0d, 0.0d, 16.0d, 6.0d, 16.0d),
-			Block.makeCuboidShape(0.0d, 0.0d, 0.0d, 16.0d, 7.0d, 16.0d),
-			Block.makeCuboidShape(0.0d, 0.0d, 0.0d, 16.0d, 8.0d, 16.0d),
-			Block.makeCuboidShape(0.0d, 0.0d, 0.0d, 16.0d, 9.0d, 16.0d),
-			Block.makeCuboidShape(0.0d, 0.0d, 0.0d, 16.0d, 10.0d, 16.0d),
-			Block.makeCuboidShape(0.0d, 0.0d, 0.0d, 16.0d, 11.0d, 16.0d),
-			Block.makeCuboidShape(0.0d, 0.0d, 0.0d, 16.0d, 12.0d, 16.0d),
-			Block.makeCuboidShape(0.0d, 0.0d, 0.0d, 16.0d, 13.0d, 16.0d),
-			Block.makeCuboidShape(0.0d, 0.0d, 0.0d, 16.0d, 14.0d, 16.0d),
-			Block.makeCuboidShape(0.0d, 0.0d, 0.0d, 16.0d, 15.0d, 16.0d),
-			Block.makeCuboidShape(0.0d, 0.0d, 0.0d, 16.0d, 16.0d, 16.0d) };
+	private static final VoxelShape[] SHAPE_BY_AGE = new VoxelShape[] {
+			Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 2.0D, 16.0D),
+			Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 4.0D, 16.0D),
+			Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 6.0D, 16.0D),
+			Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 8.0D, 16.0D),
+			Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 10.0D, 16.0D),
+			Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 12.0D, 16.0D),
+			Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 14.0D, 16.0D),
+			Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 16.0D, 16.0D) };
 
-	public ExampleCrop(Properties builderIn) {
-		super(builderIn);
+	public ExampleCrop(Properties builder) {
+		super(builder);
 	}
 
 	@Override
-	public IItemProvider getSeedsItem() {
-		return ItemInitNew.DEF_ITEM.get();
+	protected IItemProvider getSeedsItem() {
+		return ItemInit.SEED_ITEM.get();
 	}
 
 	@Override
 	public VoxelShape getShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context) {
-		return SHAPES[state.get(this.getAgeProperty())];
+		return SHAPE_BY_AGE[state.get(this.getAgeProperty())];
 	}
 }

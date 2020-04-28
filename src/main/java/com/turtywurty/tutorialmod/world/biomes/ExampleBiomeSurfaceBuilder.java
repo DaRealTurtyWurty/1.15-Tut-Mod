@@ -5,7 +5,6 @@ import java.util.function.Function;
 
 import com.mojang.datafixers.Dynamic;
 import com.turtywurty.tutorialmod.init.BlockInit;
-import com.turtywurty.tutorialmod.init.BlockInitNew;
 
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
@@ -25,15 +24,18 @@ public class ExampleBiomeSurfaceBuilder extends SurfaceBuilder<SurfaceBuilderCon
 			BlockState defaultBlock, BlockState defaultFluid, int seaLevel, long seed, SurfaceBuilderConfig config) {
 		Random rd = new Random();
 		int i = rd.nextInt(3);
-		if (i == 0)
+		if (i == 0) {
 			SurfaceBuilder.DEFAULT.buildSurface(random, chunkIn, biomeIn, x, z, startHeight, noise, defaultBlock,
-					defaultFluid, seaLevel, seed, new SurfaceBuilderConfig(BlockInit.example_block.getDefaultState(),
-							BlockInitNew.DEF_BLOCK.get().getDefaultState(), Blocks.ACACIA_PLANKS.getDefaultState()));
-		else
+					defaultFluid, seaLevel, seed,
+					new SurfaceBuilderConfig(BlockInit.EXAMPLE_BLOCK.get().getDefaultState(),
+							BlockInit.DEF_BLOCK.get().getDefaultState(), Blocks.ACACIA_PLANKS.getDefaultState()));
+		} else {
 			SurfaceBuilder.DEFAULT.buildSurface(random, chunkIn, biomeIn, x, z, startHeight, noise, defaultBlock,
 					defaultFluid, seaLevel, seed,
 					new SurfaceBuilderConfig(
-							i == 1 ? Blocks.GRASS_BLOCK.getDefaultState() : BlockInit.example_block.getDefaultState(),
-							BlockInitNew.DEF_BLOCK.get().getDefaultState(), Blocks.ACACIA_PLANKS.getDefaultState()));
+							i == 1 ? Blocks.GRASS_BLOCK.getDefaultState()
+									: BlockInit.EXAMPLE_BLOCK.get().getDefaultState(),
+							BlockInit.DEF_BLOCK.get().getDefaultState(), Blocks.ACACIA_PLANKS.getDefaultState()));
+		}
 	}
 }

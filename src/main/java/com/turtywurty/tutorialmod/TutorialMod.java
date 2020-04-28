@@ -5,9 +5,8 @@ import org.apache.logging.log4j.Logger;
 
 import com.turtywurty.tutorialmod.init.BiomeInit;
 import com.turtywurty.tutorialmod.init.BlockInit;
-import com.turtywurty.tutorialmod.init.BlockInitNew;
 import com.turtywurty.tutorialmod.init.DimensionInit;
-import com.turtywurty.tutorialmod.init.ItemInitNew;
+import com.turtywurty.tutorialmod.init.ItemInit;
 import com.turtywurty.tutorialmod.init.ModContainerTypes;
 import com.turtywurty.tutorialmod.init.ModEntityTypes;
 import com.turtywurty.tutorialmod.init.ModTileEntityTypes;
@@ -55,8 +54,8 @@ public class TutorialMod {
 		SoundInit.SOUNDS.register(modEventBus);
 		PotionInit.POTIONS.register(modEventBus);
 		PotionInit.POTION_EFFECTS.register(modEventBus);
-		ItemInitNew.ITEMS.register(modEventBus);
-		BlockInitNew.BLOCKS.register(modEventBus);
+		ItemInit.ITEMS.register(modEventBus);
+		BlockInit.BLOCKS.register(modEventBus);
 		ModTileEntityTypes.TILE_ENTITY_TYPES.register(modEventBus);
 		ModContainerTypes.CONTAINER_TYPES.register(modEventBus);
 		ModEntityTypes.ENTITY_TYPES.register(modEventBus);
@@ -72,7 +71,7 @@ public class TutorialMod {
 	public static void onRegisterItems(final RegistryEvent.Register<Item> event) {
 		final IForgeRegistry<Item> registry = event.getRegistry();
 
-		BlockInitNew.BLOCKS.getEntries().stream().filter(block -> !(block.get() instanceof ExampleCrop))
+		BlockInit.BLOCKS.getEntries().stream().filter(block -> !(block.get() instanceof ExampleCrop))
 				.map(RegistryObject::get).forEach(block -> {
 					final Item.Properties properties = new Item.Properties().group(TutorialItemGroup.instance);
 					final BlockItem blockItem = new BlockItem(block, properties);
@@ -89,8 +88,8 @@ public class TutorialMod {
 	}
 
 	private void setup(final FMLCommonSetupEvent event) {// K9#8016
-		ComposterBlock.registerCompostable(0.6f, BlockInitNew.JAZZ_LEAVES.get());
-		ComposterBlock.registerCompostable(0.4f, ItemInitNew.SEED_ITEM.get());
+		ComposterBlock.registerCompostable(0.6f, BlockInit.JAZZ_LEAVES.get());
+		// ComposterBlock.registerCompostable(0.4f, ItemInit.SEED_ITEM.get());
 	}
 
 	@SubscribeEvent
@@ -112,7 +111,7 @@ public class TutorialMod {
 
 		@Override
 		public ItemStack createIcon() {
-			return new ItemStack(BlockInit.example_block);
+			return new ItemStack(BlockInit.EXAMPLE_BLOCK.get());
 		}
 	}
 }
