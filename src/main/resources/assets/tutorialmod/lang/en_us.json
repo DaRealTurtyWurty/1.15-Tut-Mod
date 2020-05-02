@@ -3,18 +3,15 @@
 	"item.tutorialmod.test_item": "Test Item",
 	"item.tutorialmod.special_item": "Special Item",
 	"item.tutorialmod.def_item": "Deferred Item",
-	
 	"item.tutorialmod.example_sword": "Example Sword",
 	"item.tutorialmod.example_pickaxe": "Example Pickaxe",
 	"item.tutorialmod.example_shovel": "Example Shovel",
 	"item.tutorialmod.example_axe": "Example Axe",
 	"item.tutorialmod.example_hoe": "Example Hoe",
-	
 	"item.tutorialmod.test_helmet": "Test Helmet",
 	"item.tutorialmod.test_chestplate": "Test Chestplate",
 	"item.tutorialmod.test_leggings": "Test Leggings",
 	"item.tutorialmod.test_boots": "Test Boots",
-	
 	"block.tutorialmod.example_block": "Example Block",
 	"block.tutorialmod.specal_block": "Specal Block",
 	"block.tutorialmod.example_button": "Example Button",
@@ -30,18 +27,14 @@
 	"block.tutorialmod.jazz_leaves": "Jazz Leaves",
 	"block.tutorialmod.jazz_slab": "Jazz Slab",
 	"block.tutorialmod.example_crop": "Example Seeds",
-	
+	"block.tutorialmod.jazz_door": "Jazz Door",
 	"container.example_chest": "Example Chest",
-	
 	"itemGroup.tutorialtab": "Tutorial Tab",
-	
 	"generator.example_world": "Example",
-	
 	"effect.tutorialmod.example_effect": "Example Effect",
 	"item.tutorialmod.potion.example_effect": "Potion of Example",
 	"item.tutorialmod.splash_potion.example_effect": "Splash Potion of Example",
 	"item.tutorialmod.lingering_potion.example_effect": "Lingering Potion of Example",
 	"item.tutorialmod.tipped_arrow.example_effect": "Arrow of Example",
-	
 	"enchantment.tutorialmod.upstep": "Upstep"
 }

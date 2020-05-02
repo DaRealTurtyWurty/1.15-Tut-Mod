@@ -15,7 +15,6 @@ import com.turtywurty.tutorialmod.init.PotionInit;
 import com.turtywurty.tutorialmod.init.SoundInit;
 import com.turtywurty.tutorialmod.objects.blocks.ExampleCrop;
 import com.turtywurty.tutorialmod.world.gen.TutorialOreGen;
-//import com.turtywurty.tutorialmod.world.worldtype.ExampleWorldType;
 
 import net.minecraft.block.ComposterBlock;
 import net.minecraft.item.BlockItem;
@@ -29,6 +28,7 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.DeferredWorkQueue;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber.Bus;
@@ -38,6 +38,7 @@ import net.minecraftforge.fml.event.server.FMLServerStartingEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.IForgeRegistry;
 
+@SuppressWarnings("deprecation")
 @Mod("tutorialmod")
 @Mod.EventBusSubscriber(modid = TutorialMod.MOD_ID, bus = Bus.MOD)
 public class TutorialMod {
@@ -91,7 +92,8 @@ public class TutorialMod {
 
 	private void setup(final FMLCommonSetupEvent event) {// K9#8016
 		ComposterBlock.registerCompostable(0.6f, BlockInit.JAZZ_LEAVES.get());
-		// ComposterBlock.registerCompostable(0.4f, ItemInit.SEED_ITEM.get());
+		ComposterBlock.registerCompostable(0.4f, ItemInit.SEED_ITEM.get());
+		DeferredWorkQueue.runLater(TutorialOreGen::generateOre);
 	}
 
 	@SubscribeEvent
@@ -101,7 +103,8 @@ public class TutorialMod {
 
 	@SubscribeEvent
 	public static void loadCompleteEvent(FMLLoadCompleteEvent event) {
-		TutorialOreGen.generateOre();
+		// This doesnt work anymore
+		// TutorialOreGen.generateOre();
 	}
 
 	public static class TutorialItemGroup extends ItemGroup {

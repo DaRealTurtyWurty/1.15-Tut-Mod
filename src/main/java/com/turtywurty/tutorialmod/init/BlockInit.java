@@ -4,6 +4,7 @@ import com.turtywurty.tutorialmod.TutorialMod;
 import com.turtywurty.tutorialmod.objects.blocks.BlockQuarry;
 import com.turtywurty.tutorialmod.objects.blocks.ExampleChestBlock;
 import com.turtywurty.tutorialmod.objects.blocks.ExampleCrop;
+import com.turtywurty.tutorialmod.objects.blocks.JazzDoor;
 import com.turtywurty.tutorialmod.objects.blocks.ModPressurePlateBlock;
 import com.turtywurty.tutorialmod.objects.blocks.ModSaplingBlock;
 import com.turtywurty.tutorialmod.objects.blocks.ModWoodButtonBlock;
@@ -76,4 +77,7 @@ public class BlockInit {
 
 	public static final RegistryObject<Block> EXAMPLE_CROP = BLOCKS.register("example_crop",
 			() -> new ExampleCrop(Block.Properties.from(Blocks.WHEAT)));
+
+	public static final RegistryObject<Block> JAZZ_DOOR = BLOCKS.register("jazz_door",
+			() -> new JazzDoor(Block.Properties.from(Blocks.OAK_DOOR)));
 }

@@ -1,0 +1,7 @@
+{
+    "parent": "block/door_bottom",
+    "textures": {
+        "bottom": "tutorialmod:blocks/jazz_door_bottom",
+        "top": "tutorialmod:blocks/jazz_door_top"
+    }
+}
