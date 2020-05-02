@@ -1,6 +1,7 @@
 {
 	"parent": "item/generated",
 	"textures": {
-		"layer0": "tutorialmod:items/seed_item"
+		"layer0": "tutorialmod:items/part0",
+		"layer1": "tutorialmod:items/part1"
 	}
 }
