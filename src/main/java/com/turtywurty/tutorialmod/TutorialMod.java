@@ -6,6 +6,7 @@ import org.apache.logging.log4j.Logger;
 import com.turtywurty.tutorialmod.init.BiomeInit;
 import com.turtywurty.tutorialmod.init.BlockInit;
 import com.turtywurty.tutorialmod.init.DimensionInit;
+import com.turtywurty.tutorialmod.init.EnchantmentInit;
 import com.turtywurty.tutorialmod.init.ItemInit;
 import com.turtywurty.tutorialmod.init.ModContainerTypes;
 import com.turtywurty.tutorialmod.init.ModEntityTypes;
@@ -54,6 +55,7 @@ public class TutorialMod {
 		SoundInit.SOUNDS.register(modEventBus);
 		PotionInit.POTIONS.register(modEventBus);
 		PotionInit.POTION_EFFECTS.register(modEventBus);
+		EnchantmentInit.ENCHANTMENTS.register(modEventBus);
 		ItemInit.ITEMS.register(modEventBus);
 		BlockInit.BLOCKS.register(modEventBus);
 		ModTileEntityTypes.TILE_ENTITY_TYPES.register(modEventBus);
