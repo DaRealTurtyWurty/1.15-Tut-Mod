@@ -1,9 +1,11 @@
 package com.turtywurty.tutorialmod.enchantments;
 
 import com.turtywurty.tutorialmod.TutorialMod;
+import com.turtywurty.tutorialmod.init.EnchantmentInit;
 
 import net.minecraft.block.Blocks;
 import net.minecraft.enchantment.Enchantment;
+import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.EnchantmentType;
 import net.minecraft.enchantment.Enchantments;
 import net.minecraft.entity.player.PlayerEntity;
@@ -42,14 +44,19 @@ public class UpstepEnchantment extends Enchantment {
 		public static void doStuff(PlayerTickEvent event) {
 			PlayerEntity playerIn = event.player;
 			World worldIn = playerIn.world;
-
-			if (playerIn.isCrouching()) {
-				if (worldIn.getBlockState(playerIn.getPosition().down()).getBlock() == Blocks.BARRIER) {
-					worldIn.setBlockState(playerIn.getPosition(), Blocks.AIR.getDefaultState());
-					worldIn.setBlockState(playerIn.getPosition().down().down(), Blocks.BARRIER.getDefaultState());
+			if (playerIn.hasItemInSlot(EquipmentSlotType.FEET)
+					&& EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.UPSTEP.get(),
+							playerIn.getItemStackFromSlot(EquipmentSlotType.FEET)) > 0) {
+				if (playerIn.isCrouching()) {
+					if (worldIn.getBlockState(playerIn.getPosition().down()) == Blocks.BARRIER.getDefaultState()) {
+						worldIn.setBlockState(playerIn.getPosition(), Blocks.AIR.getDefaultState());
+						worldIn.setBlockState(playerIn.getPosition().down().down(), Blocks.BARRIER.getDefaultState());
+					}
+				} else {
+					if (worldIn.getBlockState(playerIn.getPosition().down()) == Blocks.AIR.getDefaultState()) {
+						worldIn.setBlockState(playerIn.getPosition().down(), Blocks.BARRIER.getDefaultState());
+					}
 				}
-			} else {
-				worldIn.setBlockState(playerIn.getPosition().down(), Blocks.BARRIER.getDefaultState());
 			}
 		}
 	}
