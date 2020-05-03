@@ -27,10 +27,10 @@ public class ItemInit {
 	public static final DeferredRegister<Item> ITEMS = new DeferredRegister<>(ForgeRegistries.ITEMS,
 			TutorialMod.MOD_ID);
 
-	public static final RegistryObject<Item> DEF_ITEM = ITEMS.register("def_item",
+	public static final RegistryObject<SpecialItem> DEF_ITEM = ITEMS.register("def_item",
 			() -> new SpecialItem(new Item.Properties().group(TutorialItemGroup.instance)));
 
-	public static final RegistryObject<Item> SEED_ITEM = ITEMS.register("seed_item",
+	public static final RegistryObject<BlockItem> SEED_ITEM = ITEMS.register("seed_item",
 			() -> new BlockItem(BlockInit.EXAMPLE_CROP.get(), new Item.Properties().group(TutorialItemGroup.instance)));
 
 	public static final RegistryObject<Item> EXAMPLE_ITEM = ITEMS.register("example_item",
@@ -40,40 +40,43 @@ public class ItemInit {
 			() -> new Item(new Item.Properties().group(TutorialItemGroup.instance).food(new Food.Builder().hunger(6)
 					.saturation(1.2f).effect(new EffectInstance(Effects.ABSORPTION, 6000, 5), 0.7f).build())));
 
-	public static final RegistryObject<Item> SPECIAL_ITEM = ITEMS.register("special_item",
+	public static final RegistryObject<SpecialItem> SPECIAL_ITEM = ITEMS.register("special_item",
 			() -> new SpecialItem(new Item.Properties().group(TutorialItemGroup.instance)));
 
-	public static final RegistryObject<Item> EXAMPLE_SWORD = ITEMS.register("example_sword",
+	public static final RegistryObject<SwordItem> EXAMPLE_SWORD = ITEMS.register("example_sword",
 			() -> new SwordItem(ModItemTiers.EXAMPLE, 7, 5.0f,
 					new Item.Properties().group(TutorialItemGroup.instance)));
 
-	public static final RegistryObject<Item> EXAMPLE_PICKAXE = ITEMS.register("example_pickaxe",
+	public static final RegistryObject<PickaxeItem> EXAMPLE_PICKAXE = ITEMS.register("example_pickaxe",
 			() -> new PickaxeItem(ModItemTiers.EXAMPLE, 4, 5.0f,
 					new Item.Properties().group(TutorialItemGroup.instance)));
 
-	public static final RegistryObject<Item> EXAMPLE_SHOVEL = ITEMS.register("example_shovel",
+	public static final RegistryObject<ShovelItem> EXAMPLE_SHOVEL = ITEMS.register("example_shovel",
 			() -> new ShovelItem(ModItemTiers.EXAMPLE, 2, 5.0f,
 					new Item.Properties().group(TutorialItemGroup.instance)));
 
-	public static final RegistryObject<Item> EXAMPLE_AXE = ITEMS.register("example_axe",
+	public static final RegistryObject<AxeItem> EXAMPLE_AXE = ITEMS.register("example_axe",
 			() -> new AxeItem(ModItemTiers.EXAMPLE, 11, 3.0f, new Item.Properties().group(TutorialItemGroup.instance)));
 
-	public static final RegistryObject<Item> EXAMPLE_HOE = ITEMS.register("example_hoe",
+	public static final RegistryObject<HoeItem> EXAMPLE_HOE = ITEMS.register("example_hoe",
 			() -> new HoeItem(ModItemTiers.EXAMPLE, 5.0f, new Item.Properties().group(TutorialItemGroup.instance)));
 
-	public static final RegistryObject<Item> TEST_HELMET = ITEMS.register("test_helmet",
+	public static final RegistryObject<ArmorItem> TEST_HELMET = ITEMS.register("test_helmet",
 			() -> new ArmorItem(ModArmorMaterials.TEST, EquipmentSlotType.HEAD,
 					new Item.Properties().group(TutorialItemGroup.instance)));
 
-	public static final RegistryObject<Item> TEST_CHESTPLATE = ITEMS.register("test_chestplate",
+	public static final RegistryObject<ArmorItem> TEST_CHESTPLATE = ITEMS.register("test_chestplate",
 			() -> new ArmorItem(ModArmorMaterials.TEST, EquipmentSlotType.CHEST,
 					new Item.Properties().group(TutorialItemGroup.instance)));
 
-	public static final RegistryObject<Item> TEST_LEGGINGS = ITEMS.register("test_leggings",
+	public static final RegistryObject<ArmorItem> TEST_LEGGINGS = ITEMS.register("test_leggings",
 			() -> new ArmorItem(ModArmorMaterials.TEST, EquipmentSlotType.LEGS,
 					new Item.Properties().group(TutorialItemGroup.instance)));
 
-	public static final RegistryObject<Item> TEST_BOOTS = ITEMS.register("test_boots",
+	public static final RegistryObject<ArmorItem> TEST_BOOTS = ITEMS.register("test_boots",
 			() -> new ArmorItem(ModArmorMaterials.TEST, EquipmentSlotType.FEET,
 					new Item.Properties().group(TutorialItemGroup.instance)));
+
+	public static final RegistryObject<Item> CRYSTAL = ITEMS.register("crystal",
+			() -> new Item(new Item.Properties().group(TutorialItemGroup.instance).maxStackSize(4)));
 }

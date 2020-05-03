@@ -1,0 +1,42 @@
+{
+	"parent": "item/generated",
+	"textures": {
+		"layer0": "tutorialmod:items/crystal1"
+	},
+	"overrides": [
+		{
+			"predicate": {
+				"tutorialmod:count": 0.0
+			},
+			"model": "tutorialmod:item/crystal"
+		},
+		
+		{
+			"predicate": {
+				"tutorialmod:count": 0.25
+			},
+			"model": "tutorialmod:item/crystal"
+		},
+		
+		{
+			"predicate": {
+				"tutorialmod:count": 0.5
+			},
+			"model": "tutorialmod:item/crystal/crystal2"
+		},
+		
+		{
+			"predicate": {
+				"tutorialmod:count": 0.75
+			},
+			"model": "tutorialmod:item/crystal/crystal3"
+		},
+		
+		{
+			"predicate": {
+				"tutorialmod:count": 1.0
+			},
+			"model": "tutorialmod:item/crystal/crystal4"
+		}
+	]
+}
