@@ -7,16 +7,19 @@ import com.turtywurty.tutorialmod.init.BiomeInit;
 import com.turtywurty.tutorialmod.init.BlockInit;
 import com.turtywurty.tutorialmod.init.DimensionInit;
 import com.turtywurty.tutorialmod.init.EnchantmentInit;
+import com.turtywurty.tutorialmod.init.FluidInit;
 import com.turtywurty.tutorialmod.init.ItemInit;
 import com.turtywurty.tutorialmod.init.ModContainerTypes;
 import com.turtywurty.tutorialmod.init.ModEntityTypes;
 import com.turtywurty.tutorialmod.init.ModTileEntityTypes;
+import com.turtywurty.tutorialmod.init.ParticleInit;
 import com.turtywurty.tutorialmod.init.PotionInit;
 import com.turtywurty.tutorialmod.init.SoundInit;
 import com.turtywurty.tutorialmod.objects.blocks.ExampleCrop;
 import com.turtywurty.tutorialmod.world.gen.TutorialOreGen;
 
 import net.minecraft.block.ComposterBlock;
+import net.minecraft.block.FlowingFluidBlock;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
@@ -53,16 +56,17 @@ public class TutorialMod {
 		final IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 		modEventBus.addListener(this::setup);
 
+		ParticleInit.PARTICLE_TYPES.register(modEventBus);
 		SoundInit.SOUNDS.register(modEventBus);
 		PotionInit.POTIONS.register(modEventBus);
 		PotionInit.POTION_EFFECTS.register(modEventBus);
 		EnchantmentInit.ENCHANTMENTS.register(modEventBus);
 		ItemInit.ITEMS.register(modEventBus);
+		FluidInit.FLUIDS.register(modEventBus);
 		BlockInit.BLOCKS.register(modEventBus);
 		ModTileEntityTypes.TILE_ENTITY_TYPES.register(modEventBus);
 		ModContainerTypes.CONTAINER_TYPES.register(modEventBus);
 		ModEntityTypes.ENTITY_TYPES.register(modEventBus);
-
 		BiomeInit.BIOMES.register(modEventBus);
 		DimensionInit.MOD_DIMENSIONS.register(modEventBus);
 
@@ -74,7 +78,8 @@ public class TutorialMod {
 	public static void onRegisterItems(final RegistryEvent.Register<Item> event) {
 		final IForgeRegistry<Item> registry = event.getRegistry();
 
-		BlockInit.BLOCKS.getEntries().stream().filter(block -> !(block.get() instanceof ExampleCrop))
+		BlockInit.BLOCKS.getEntries().stream()
+				.filter(block -> !(block.get() instanceof ExampleCrop) && !(block.get() instanceof FlowingFluidBlock))
 				.map(RegistryObject::get).forEach(block -> {
 					final Item.Properties properties = new Item.Properties().group(TutorialItemGroup.instance);
 					final BlockItem blockItem = new BlockItem(block, properties);
@@ -94,7 +99,21 @@ public class TutorialMod {
 		ComposterBlock.registerCompostable(0.6f, BlockInit.JAZZ_LEAVES.get());
 		ComposterBlock.registerCompostable(0.4f, ItemInit.SEED_ITEM.get());
 		DeferredWorkQueue.runLater(TutorialOreGen::generateOre);
+		/*
+		 * DeferredWorkQueue.runLater(() -> { for (Biome biome : ForgeRegistries.BIOMES)
+		 * { if (biome instanceof ExampleBiome) {
+		 * biome.getSpawns(EntityClassification.MONSTER) .add(new
+		 * Biome.SpawnListEntry(EntityType.ZOMBIE, 1000, 1, 4)); } } });
+		 */
 	}
+
+	/*
+	 * public static void registerPlacementType(EntityType type,
+	 * EntitySpawnPlacementRegistry.PlacementType placementType) {
+	 * EntitySpawnPlacementRegistry.register(type, placementType,
+	 * Heightmap.Type.MOTION_BLOCKING_NO_LEAVES,
+	 * MonsterEntity::canMonsterSpawnInLight); }
+	 */
 
 	@SubscribeEvent
 	public static void onServerStarting(FMLServerStartingEvent event) {

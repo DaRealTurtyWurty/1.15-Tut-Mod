@@ -3,25 +3,15 @@ package com.turtywurty.tutorialmod.world.dimension;
 import java.util.List;
 
 import net.minecraft.entity.EntityClassification;
-import net.minecraft.util.SharedSeedRandom;
 import net.minecraft.util.Util;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.ChunkPos;
 import net.minecraft.util.math.MathHelper;
-import net.minecraft.village.VillageSiege;
 import net.minecraft.world.IWorld;
 import net.minecraft.world.WorldType;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.provider.BiomeProvider;
 import net.minecraft.world.gen.NoiseChunkGenerator;
 import net.minecraft.world.gen.OctavesNoiseGenerator;
-import net.minecraft.world.gen.WorldGenRegion;
-import net.minecraft.world.gen.feature.Feature;
-import net.minecraft.world.server.ServerWorld;
-import net.minecraft.world.spawner.CatSpawner;
-import net.minecraft.world.spawner.PatrolSpawner;
-import net.minecraft.world.spawner.PhantomSpawner;
-import net.minecraft.world.spawner.WorldEntitySpawner;
 
 public class ExampleChunkGenerator extends NoiseChunkGenerator<ExampleGenSettings> {
 	private static final float[] field_222576_h = Util.make(new float[25], (p_222575_0_) -> {
@@ -35,25 +25,12 @@ public class ExampleChunkGenerator extends NoiseChunkGenerator<ExampleGenSetting
 	});
 	private final OctavesNoiseGenerator depthNoise;
 	private final boolean isAmplified;
-	private final PhantomSpawner phantomSpawner = new PhantomSpawner();
-	private final PatrolSpawner patrolSpawner = new PatrolSpawner();
-	private final CatSpawner catSpawner = new CatSpawner();
-	private final VillageSiege villageSiege = new VillageSiege();
 
 	public ExampleChunkGenerator(IWorld worldIn, BiomeProvider provider, ExampleGenSettings settingsIn) {
 		super(worldIn, provider, 4, 8, 256, settingsIn, true);
 		this.randomSeed.skip(2620);
 		this.depthNoise = new OctavesNoiseGenerator(this.randomSeed, 15, 0);
 		this.isAmplified = worldIn.getWorldInfo().getGenerator() == WorldType.AMPLIFIED;
-	}
-
-	public void spawnMobs(WorldGenRegion region) {
-		int i = region.getMainChunkX();
-		int j = region.getMainChunkZ();
-		Biome biome = region.getBiome((new ChunkPos(i, j)).asBlockPos());
-		SharedSeedRandom sharedseedrandom = new SharedSeedRandom();
-		sharedseedrandom.setDecorationSeed(region.getSeed(), i << 4, j << 4);
-		WorldEntitySpawner.performWorldGenSpawning(region, biome, i, j, sharedseedrandom);
 	}
 
 	@SuppressWarnings("unused")
@@ -141,33 +118,9 @@ public class ExampleChunkGenerator extends NoiseChunkGenerator<ExampleGenSetting
 		return d0;
 	}
 
+	@Override
 	public List<Biome.SpawnListEntry> getPossibleCreatures(EntityClassification creatureType, BlockPos pos) {
-		if (Feature.SWAMP_HUT.func_202383_b(this.world, pos)) {
-			if (creatureType == EntityClassification.MONSTER) {
-				return Feature.SWAMP_HUT.getSpawnList();
-			}
-
-			if (creatureType == EntityClassification.CREATURE) {
-				return Feature.SWAMP_HUT.getCreatureSpawnList();
-			}
-		} else if (creatureType == EntityClassification.MONSTER) {
-			if (Feature.PILLAGER_OUTPOST.isPositionInStructure(this.world, pos)) {
-				return Feature.PILLAGER_OUTPOST.getSpawnList();
-			}
-
-			if (Feature.OCEAN_MONUMENT.isPositionInStructure(this.world, pos)) {
-				return Feature.OCEAN_MONUMENT.getSpawnList();
-			}
-		}
-
 		return super.getPossibleCreatures(creatureType, pos);
-	}
-
-	public void spawnMobs(ServerWorld worldIn, boolean spawnHostileMobs, boolean spawnPeacefulMobs) {
-		this.phantomSpawner.tick(worldIn, spawnHostileMobs, spawnPeacefulMobs);
-		this.patrolSpawner.tick(worldIn, spawnHostileMobs, spawnPeacefulMobs);
-		this.catSpawner.tick(worldIn, spawnHostileMobs, spawnPeacefulMobs);
-		this.villageSiege.func_225477_a(worldIn, spawnHostileMobs, spawnPeacefulMobs);
 	}
 
 	public int getGroundHeight() {

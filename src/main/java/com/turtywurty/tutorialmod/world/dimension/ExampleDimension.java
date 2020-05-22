@@ -72,6 +72,11 @@ public class ExampleDimension extends Dimension {
 	public SleepResult canSleepAt(PlayerEntity player, BlockPos pos) {
 		return SleepResult.BED_EXPLODES;
 	}
+	
+	@Override
+	public boolean hasSkyLight() {
+		return true;
+	}
 
 	@Override
 	public int getActualHeight() {

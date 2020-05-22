@@ -2,10 +2,11 @@ package com.turtywurty.tutorialmod.objects.blocks;
 
 import java.util.stream.Stream;
 
+import com.turtywurty.tutorialmod.particles.ColouredParticle;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.HorizontalBlock;
-import net.minecraft.entity.effect.LightningBoltEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.BlockItemUseContext;
 import net.minecraft.state.DirectionProperty;
@@ -23,7 +24,6 @@ import net.minecraft.util.math.shapes.VoxelShape;
 import net.minecraft.util.math.shapes.VoxelShapes;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
-import net.minecraft.world.server.ServerWorld;
 
 public class SpecalBlock extends Block {
 
@@ -108,11 +108,13 @@ public class SpecalBlock extends Block {
 	@Override
 	public ActionResultType onBlockActivated(BlockState state, World worldIn, BlockPos pos, PlayerEntity player,
 			Hand handIn, BlockRayTraceResult result) {
-		if (!worldIn.isRemote()) {
-			ServerWorld serverWorld = (ServerWorld) worldIn;
-			LightningBoltEntity entity = new LightningBoltEntity(worldIn, pos.getX(), pos.getY(), pos.getZ(), false);
-			serverWorld.addLightningBolt(entity);
-		}
+		/*
+		 * if (!worldIn.isRemote()) { ServerWorld serverWorld = (ServerWorld) worldIn;
+		 * LightningBoltEntity entity = new LightningBoltEntity(worldIn, pos.getX(),
+		 * pos.getY(), pos.getZ(), false); serverWorld.addLightningBolt(entity); }
+		 */
+		worldIn.addParticle(new ColouredParticle.ColouredParticleData(0.0f, 1.0f, 0.0f, 1.0f), pos.getX() + 0.5f,
+				pos.getY() + 0.5f, pos.getZ() + 0.5f, 0.0f, 0.0f, 0.0f);
 		return ActionResultType.SUCCESS;
 	}
 }
