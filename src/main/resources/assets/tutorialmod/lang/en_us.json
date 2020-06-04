@@ -37,5 +37,7 @@
 	"item.tutorialmod.splash_potion.example_effect": "Splash Potion of Example",
 	"item.tutorialmod.lingering_potion.example_effect": "Lingering Potion of Example",
 	"item.tutorialmod.tipped_arrow.example_effect": "Arrow of Example",
-	"enchantment.tutorialmod.upstep": "Upstep"
+	"enchantment.tutorialmod.upstep": "Upstep",
+	"container.tutorialmod.item_pedestal": "Item Pedestal",
+	"block.tutorialmod.item_pedestal": "Item Pedestal"
 }

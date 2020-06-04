@@ -3,10 +3,13 @@ package com.turtywurty.tutorialmod.util;
 import com.turtywurty.tutorialmod.TutorialMod;
 import com.turtywurty.tutorialmod.client.entity.render.ExampleEntityRender;
 import com.turtywurty.tutorialmod.client.gui.ExampleChestScreen;
+import com.turtywurty.tutorialmod.client.gui.ItemPedestalScreen;
+import com.turtywurty.tutorialmod.client.tileentity.renderer.ItemPedestalRenderer;
 import com.turtywurty.tutorialmod.init.BlockInit;
 import com.turtywurty.tutorialmod.init.ItemInit;
 import com.turtywurty.tutorialmod.init.ModContainerTypes;
 import com.turtywurty.tutorialmod.init.ModEntityTypes;
+import com.turtywurty.tutorialmod.init.ModTileEntityTypes;
 
 import net.minecraft.client.gui.ScreenManager;
 import net.minecraft.client.renderer.RenderType;
@@ -18,6 +21,7 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber.Bus;
@@ -29,6 +33,7 @@ public class ClientEventBusSubscriber {
 	@SubscribeEvent
 	public static void clientSetup(FMLClientSetupEvent event) {
 		ScreenManager.registerFactory(ModContainerTypes.EXAMPLE_CHEST.get(), ExampleChestScreen::new);
+		ScreenManager.registerFactory(ModContainerTypes.ITEM_PEDESTAL.get(), ItemPedestalScreen::new);
 		RenderTypeLookup.setRenderLayer(BlockInit.JAZZ_SAPLING.get(), RenderType.getCutout());
 		RenderTypeLookup.setRenderLayer(BlockInit.EXAMPLE_CROP.get(), RenderType.getCutout());
 		RenderTypeLookup.setRenderLayer(BlockInit.JAZZ_DOOR.get(), RenderType.getCutout());
@@ -53,5 +58,8 @@ public class ClientEventBusSubscriber {
 						}
 					}
 				});
+
+		ClientRegistry.bindTileEntityRenderer(ModTileEntityTypes.ITEM_PEDESTAL.get(),
+				ItemPedestalRenderer::new);
 	}
 }

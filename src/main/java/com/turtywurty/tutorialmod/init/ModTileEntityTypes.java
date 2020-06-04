@@ -2,6 +2,7 @@ package com.turtywurty.tutorialmod.init;
 
 import com.turtywurty.tutorialmod.TutorialMod;
 import com.turtywurty.tutorialmod.tileentity.ExampleChestTileEntity;
+import com.turtywurty.tutorialmod.tileentity.ItemPedestalTileEntity;
 import com.turtywurty.tutorialmod.tileentity.QuarryTileEntity;
 
 import net.minecraft.tileentity.TileEntityType;
@@ -20,4 +21,8 @@ public class ModTileEntityTypes {
 	public static final RegistryObject<TileEntityType<ExampleChestTileEntity>> EXAMPLE_CHEST = TILE_ENTITY_TYPES
 			.register("example_chest", () -> TileEntityType.Builder
 					.create(ExampleChestTileEntity::new, BlockInit.EXAMPLE_CHEST.get()).build(null));
+
+	public static final RegistryObject<TileEntityType<ItemPedestalTileEntity>> ITEM_PEDESTAL = TILE_ENTITY_TYPES
+			.register("item_pedestal", () -> TileEntityType.Builder
+					.create(ItemPedestalTileEntity::new, BlockInit.ITEM_PEDESTAL.get()).build(null));
 }
