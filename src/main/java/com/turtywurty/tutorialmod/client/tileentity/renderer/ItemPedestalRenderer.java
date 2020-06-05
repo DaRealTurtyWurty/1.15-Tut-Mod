@@ -26,6 +26,34 @@ public class ItemPedestalRenderer extends TileEntityRenderer<ItemPedestalTileEnt
 		degrees = 0.0f;
 	}
 
+	/*
+	 * This method is called every tick and is where all the rendering should take
+	 * place. In here, I first lopp through all the stacks in the tile entity's
+	 * items.
+	 * 
+	 * Then, if the stack is not empty, we push the matrix. This means that it is
+	 * ready to start doing any transformations that you give it. We always push
+	 * before doing any rendering, otherwise it will either not render, or act
+	 * unpredicatably.
+	 * 
+	 * Then I am translating the matrix to the center, and 0.5D above the block.
+	 * 
+	 * Then I am getting the current world time from the game time plus the partial
+	 * ticks.
+	 * 
+	 * Then I am translating the Y on a sine wave(taking in radians) so it's
+	 * sin(3.14159... * (currentTime/16)). We divide the time by 16 to decrease the
+	 * frequency(speed), and divide the whole thing by 4 to decrease the
+	 * amplitude(size). And then I add 0.1D so that it offsets it up by 0.1!
+	 * 
+	 * Then I rotate on the Y positive(clockwise) with our degrees incremented,
+	 * divided by 2 to constantly rotate it.
+	 * 
+	 * Then we call the renderItem method.
+	 * 
+	 * And finally we matrixStackIn.pop(), so that it knows that it is now done with
+	 * rendering and doesn't cause any overflows or anything.
+	 */
 	@Override
 	public void render(ItemPedestalTileEntity tileEntityIn, float partialTicks, MatrixStack matrixStackIn,
 			IRenderTypeBuffer bufferIn, int combinedLightIn, int combinedOverlayIn) {
@@ -43,6 +71,12 @@ public class ItemPedestalRenderer extends TileEntityRenderer<ItemPedestalTileEnt
 		}
 	}
 
+	/*
+	 * This method calls the existing method that minecraft has, but with our stack.
+	 * It also takes TransformType.FIXED as that is how the item will be
+	 * transformed. We also put in OverlayTexture.NO_OVERLAY to ensure that no
+	 * overlay textures are displayed.
+	 */
 	private void renderItem(ItemStack stack, float partialTicks, MatrixStack matrixStackIn, IRenderTypeBuffer bufferIn,
 			int combinedLightIn) {
 		Minecraft.getInstance().getItemRenderer().renderItem(stack, TransformType.FIXED, combinedLightIn,
