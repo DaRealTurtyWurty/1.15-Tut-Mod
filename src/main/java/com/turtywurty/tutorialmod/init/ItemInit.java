@@ -2,6 +2,7 @@ package com.turtywurty.tutorialmod.init;
 
 import com.turtywurty.tutorialmod.TutorialMod;
 import com.turtywurty.tutorialmod.TutorialMod.TutorialItemGroup;
+import com.turtywurty.tutorialmod.objects.items.ModMusicDiscItem;
 import com.turtywurty.tutorialmod.objects.items.SpecialItem;
 import com.turtywurty.tutorialmod.util.enums.ModArmorMaterials;
 import com.turtywurty.tutorialmod.util.enums.ModItemTiers;
@@ -14,6 +15,7 @@ import net.minecraft.item.Food;
 import net.minecraft.item.HoeItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.PickaxeItem;
+import net.minecraft.item.Rarity;
 import net.minecraft.item.ShovelItem;
 import net.minecraft.item.SwordItem;
 import net.minecraft.potion.EffectInstance;
@@ -79,4 +81,8 @@ public class ItemInit {
 
 	public static final RegistryObject<Item> CRYSTAL = ITEMS.register("crystal",
 			() -> new Item(new Item.Properties().group(TutorialItemGroup.instance).maxStackSize(4)));
+
+	public static final RegistryObject<Item> PROMISES_DISC = ITEMS.register("disc_promises",
+			() -> new ModMusicDiscItem(5, SoundInit.LAZY_PROMISES_MUSIC.get(),
+					new Item.Properties().group(TutorialItemGroup.instance).maxStackSize(1).rarity(Rarity.RARE)));
 }

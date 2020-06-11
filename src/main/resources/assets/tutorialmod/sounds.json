@@ -8,5 +8,15 @@
 				"stream": true
 			}
 		]
+	},
+	"disc.promises": {
+		"category": "disc",
+		"subtitle": "promises",
+		"sounds": [
+			{
+				"name": "tutorialmod:disc/promises",
+				"stream": true
+			}
+		]
 	}
 }

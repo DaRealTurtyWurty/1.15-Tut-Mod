@@ -17,7 +17,9 @@ public class ExampleDimension extends Dimension {
 
 	@Override
 	public ChunkGenerator<?> createChunkGenerator() {
-		return new ExampleChunkGenerator(world, new ExampleBiomeProvider(), new ExampleGenSettings());
+		return new ExampleChunkGenerator(world,
+				new ExampleBiomeProvider(new ExampleBiomeProviderSettings(this.world.getWorldInfo())),
+				new ExampleGenSettings());
 	}
 
 	@Override
@@ -72,7 +74,7 @@ public class ExampleDimension extends Dimension {
 	public SleepResult canSleepAt(PlayerEntity player, BlockPos pos) {
 		return SleepResult.BED_EXPLODES;
 	}
-	
+
 	@Override
 	public boolean hasSkyLight() {
 		return true;
