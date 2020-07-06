@@ -2,22 +2,11 @@ package com.turtywurty.tutorialmod.init;
 
 import com.turtywurty.tutorialmod.TutorialMod;
 import com.turtywurty.tutorialmod.TutorialMod.TutorialItemGroup;
-import com.turtywurty.tutorialmod.objects.items.ModMusicDiscItem;
 import com.turtywurty.tutorialmod.objects.items.SpecialItem;
 import com.turtywurty.tutorialmod.util.enums.ModArmorMaterials;
 import com.turtywurty.tutorialmod.util.enums.ModItemTiers;
-
 import net.minecraft.inventory.EquipmentSlotType;
-import net.minecraft.item.ArmorItem;
-import net.minecraft.item.AxeItem;
-import net.minecraft.item.BlockItem;
-import net.minecraft.item.Food;
-import net.minecraft.item.HoeItem;
-import net.minecraft.item.Item;
-import net.minecraft.item.PickaxeItem;
-import net.minecraft.item.Rarity;
-import net.minecraft.item.ShovelItem;
-import net.minecraft.item.SwordItem;
+import net.minecraft.item.*;
 import net.minecraft.potion.EffectInstance;
 import net.minecraft.potion.Effects;
 import net.minecraftforge.fml.RegistryObject;
@@ -39,8 +28,8 @@ public class ItemInit {
 			() -> new Item(new Item.Properties().group(TutorialItemGroup.instance)));
 
 	public static final RegistryObject<Item> TEST_ITEM = ITEMS.register("test_item",
-			() -> new Item(new Item.Properties().group(TutorialItemGroup.instance).food(new Food.Builder().hunger(6)
-					.saturation(1.2f).effect(new EffectInstance(Effects.ABSORPTION, 6000, 5), 0.7f).build())));
+			() -> new Item(new Item.Properties().group(TutorialItemGroup.instance).food(new Food.Builder().hunger(6) //Switched to supplier effect method
+					.saturation(1.2f).effect(() -> new EffectInstance(Effects.ABSORPTION, 6000, 5), 0.7f).build())));
 
 	public static final RegistryObject<SpecialItem> SPECIAL_ITEM = ITEMS.register("special_item",
 			() -> new SpecialItem(new Item.Properties().group(TutorialItemGroup.instance)));
@@ -83,6 +72,6 @@ public class ItemInit {
 			() -> new Item(new Item.Properties().group(TutorialItemGroup.instance).maxStackSize(4)));
 
 	public static final RegistryObject<Item> PROMISES_DISC = ITEMS.register("disc_promises",
-			() -> new ModMusicDiscItem(5, SoundInit.LAZY_PROMISES_MUSIC.get(),
+			() -> new MusicDiscItem(5, SoundInit.LAZY_PROMISES_MUSIC, //Instantiate MusicDiscItem directly
 					new Item.Properties().group(TutorialItemGroup.instance).maxStackSize(1).rarity(Rarity.RARE)));
 }

@@ -96,8 +96,8 @@ public class TutorialMod {
 	}
 
 	private void setup(final FMLCommonSetupEvent event) {// K9#8016
-		DeferredWorkQueue.runLater(() -> {ComposterBlock.registerCompostable(0.6f, BlockInit.JAZZ_LEAVES.get())});
-		DeferredWorkQueue.runLater(() -> {ComposterBlock.registerCompostable(0.4f, ItemInit.SEED_ITEM.get())});
+		DeferredWorkQueue.runLater(() -> ComposterBlock.registerCompostable(0.6f, BlockInit.JAZZ_LEAVES.get()));
+		DeferredWorkQueue.runLater(() -> ComposterBlock.registerCompostable(0.4f, ItemInit.SEED_ITEM.get()));
 		DeferredWorkQueue.runLater(TutorialOreGen::generateOre);
 		/*
 		 * DeferredWorkQueue.runLater(() -> { for (Biome biome : ForgeRegistries.BIOMES)

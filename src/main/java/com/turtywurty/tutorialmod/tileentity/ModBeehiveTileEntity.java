@@ -150,9 +150,7 @@ public class ModBeehiveTileEntity extends TileEntity implements ITickableTileEnt
 			if (flag && hiveState != ModBeehiveTileEntity.State.EMERGENCY) {
 				return false;
 			} else {
-				Entity entity = EntityType.func_220335_a(nbt, this.world, (bee) -> {
-					return bee;
-				});
+				Entity entity = EntityType.loadEntityAndExecute(nbt, this.world, (bee) -> bee);
 				if (entity != null) {
 					float width = entity.getWidth();
 					double d0 = flag ? 0.0D : 0.55D + (double) (width / 2.0F);
@@ -219,7 +217,7 @@ public class ModBeehiveTileEntity extends TileEntity implements ITickableTileEnt
 				ModBeehiveTileEntity.State beehivetileentity$state = compoundnbt.getBoolean("HasNectar")
 						? ModBeehiveTileEntity.State.HONEY_DELIVERED
 						: ModBeehiveTileEntity.State.BEE_RELEASED;
-				if (this.releaseBee(blockstate, compoundnbt, (List<Entity>) null, beehivetileentity$state)) {
+				if (this.releaseBee(blockstate, compoundnbt, null, beehivetileentity$state)) {
 					iterator.remove();
 				}
 			} else {
