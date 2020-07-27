@@ -3,8 +3,10 @@ package com.turtywurty.tutorialmod.entities;
 import com.turtywurty.tutorialmod.init.ItemInit;
 import com.turtywurty.tutorialmod.init.ModEntityTypes;
 import com.turtywurty.tutorialmod.init.SoundInit;
+import com.turtywurty.tutorialmod.particles.ColouredParticle.ColouredParticleData;
 
 import net.minecraft.entity.AgeableEntity;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.ILivingEntityData;
 import net.minecraft.entity.SharedMonsterAttributes;
@@ -29,14 +31,28 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
+import net.minecraftforge.registries.ForgeRegistries;
+import software.bernie.geckolib.animation.builder.AnimationBuilder;
+import software.bernie.geckolib.animation.controller.AnimationController;
+import software.bernie.geckolib.animation.controller.AnimationController.IParticleListener;
+import software.bernie.geckolib.animation.controller.EntityAnimationController;
+import software.bernie.geckolib.entity.IAnimatedEntity;
+import software.bernie.geckolib.event.AnimationTestEvent;
+import software.bernie.geckolib.event.ParticleKeyFrameEvent;
+import software.bernie.geckolib.event.SoundKeyframeEvent;
+import software.bernie.geckolib.manager.EntityAnimationManager;
 
-public class ExampleEntity extends AnimalEntity {
+public class ExampleEntity extends AnimalEntity implements IAnimatedEntity {
 
 	private EatGrassGoal eatGrassGoal;
 	private int exampleTimer;
+	private EntityAnimationManager manager = new EntityAnimationManager();
+	private AnimationController controller = new EntityAnimationController(this, "moveController", 20,
+			this::animationPredicate);
 
 	public ExampleEntity(EntityType<? extends AnimalEntity> type, World worldIn) {
 		super(type, worldIn);
+		registerAnimationControllers();
 	}
 
 	@Override
@@ -55,8 +71,7 @@ public class ExampleEntity extends AnimalEntity {
 		this.goalSelector.addGoal(0, new SwimGoal(this));
 		this.goalSelector.addGoal(1, new PanicGoal(this, 1.25D));
 		this.goalSelector.addGoal(2, new BreedGoal(this, 1.0D));
-		this.goalSelector.addGoal(3,
-				new TemptGoal(this, 1.1D, Ingredient.fromItems(ItemInit.DEF_ITEM.get()), false));
+		this.goalSelector.addGoal(3, new TemptGoal(this, 1.1D, Ingredient.fromItems(ItemInit.DEF_ITEM.get()), false));
 		this.goalSelector.addGoal(4, new FollowParentGoal(this, 1.1D));
 		this.goalSelector.addGoal(5, this.eatGrassGoal);
 		this.goalSelector.addGoal(6, new WaterAvoidingRandomWalkingGoal(this, 1.0D));
@@ -122,8 +137,55 @@ public class ExampleEntity extends AnimalEntity {
 		this.setGlowing(true);
 	}
 
-	@Override
-	protected SoundEvent getAmbientSound() {
+	protected SoundEvent getEntityAmbientSound() {
 		return SoundInit.AMBIENT.get();
+	}
+
+	@Override
+	public EntityAnimationManager getAnimationManager() {
+		return manager;
+	}
+
+	private <E extends ExampleEntity> boolean animationPredicate(AnimationTestEvent<E> event) {
+		if (event.isWalking()) {
+			controller.setAnimation(new AnimationBuilder().addAnimation("animation.turtywurty.move")
+					.addAnimation("animation.turtywurty.move", true));
+			return true;
+		} else {
+			controller.setAnimation(new AnimationBuilder().addAnimation("animation.turtywurty.idle", true));
+			return true;
+		}
+	}
+
+	private void registerAnimationControllers() {
+		manager.addAnimationController(controller);
+		controller.registerSoundListener(this::soundListener);
+		controller.registerParticleListener(this::particleListener);
+	}
+
+	private <E extends Entity> SoundEvent soundListener(SoundKeyframeEvent<E> event) {
+		if (event.sound.equals("moving")) {
+			return (SoundEvent) ForgeRegistries.SOUND_EVENTS.getValues().toArray()[rand
+					.nextInt(ForgeRegistries.SOUND_EVENTS.getValues().size())];
+		} else if (event.sound.equals("ambient")) {
+			return getEntityAmbientSound();
+		} else {
+			return null;
+		}
+	}
+
+	private <E extends Entity> IParticleListener particleListener(ParticleKeyFrameEvent<E> event) {
+		return new TestParticleListener();
+	}
+
+	private static class TestParticleListener implements IParticleListener {
+		@Override
+		public <E extends Entity> void summonParticle(ParticleKeyFrameEvent<E> event) {
+			if (event.effect.equals("test")) {
+				event.getEntity().getEntityWorld().addParticle(new ColouredParticleData(0.2f, 0.7f, 0.5f, 1.0f),
+						event.getEntity().getPosX(), event.getEntity().getPosY(), event.getEntity().getPosZ(), 0.0f,
+						0.4f, 0.0f);
+			}
+		}
 	}
 }

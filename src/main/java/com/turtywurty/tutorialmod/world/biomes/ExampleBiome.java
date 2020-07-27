@@ -53,6 +53,11 @@ public class ExampleBiome extends Biome {
 		DefaultBiomeFeatures.addExtraEmeraldOre(this);
 		ModBiomeFeatures.addExampleFeature(this, 10);
 	}
+	
+	@Override
+	public int getGrassColor(double posX, double posZ) {
+		return 0xFF0000;
+	}
 }
 
 //update mappings post command:

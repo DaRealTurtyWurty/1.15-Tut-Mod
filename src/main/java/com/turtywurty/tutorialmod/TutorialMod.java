@@ -41,7 +41,7 @@ import net.minecraftforge.fml.event.server.FMLServerStartingEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.IForgeRegistry;
 
-@SuppressWarnings("deprecation")
+@SuppressWarnings("deprecation") //Supresses warnings for DeferredWorkQueue, cpw literally forgot why he deprecated it, it's pointless.
 @Mod("tutorialmod")
 @Mod.EventBusSubscriber(modid = TutorialMod.MOD_ID, bus = Bus.MOD)
 public class TutorialMod {
@@ -95,7 +95,7 @@ public class TutorialMod {
 		BiomeInit.registerBiomes();
 	}
 
-	private void setup(final FMLCommonSetupEvent event) {// K9#8016
+	private void setup(final FMLCommonSetupEvent event) {// K9#8016 or the official IRC channel (link at http://mcpbot.bspk.rs/, under "How do I use MCPBot?").
 		DeferredWorkQueue.runLater(() -> ComposterBlock.registerCompostable(0.6f, BlockInit.JAZZ_LEAVES.get()));
 		DeferredWorkQueue.runLater(() -> ComposterBlock.registerCompostable(0.4f, ItemInit.SEED_ITEM.get()));
 		DeferredWorkQueue.runLater(TutorialOreGen::generateOre);
@@ -116,7 +116,7 @@ public class TutorialMod {
 	 */
 
 	@SubscribeEvent
-	public static void onServerStarting(FMLServerStartingEvent event) {
+	public static void onServerStarting(FMLServerStartingEvent event) { //This is fired on the MinecraftForge#EVENT_BUS, not the Mod bus,
 
 	}
 
