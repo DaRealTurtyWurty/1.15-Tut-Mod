@@ -1,7 +1,3 @@
-// Made with Blockbench 3.6.3
-// Exported for Minecraft version 1.12.2 or 1.15.2 (same format for both) for entity models animated with GeckoLib
-// Paste this class into your mod and follow the documentation for GeckoLib to use animations. You can find the documentation here: https://github.com/bernie-g/geckolib
-// Blockbench plugin created by Gecko
 package com.turtywurty.tutorialmod.client.entity.model;
 
 import com.turtywurty.tutorialmod.entities.ExampleEntity;
@@ -92,6 +88,6 @@ public class ExampleEntityModel extends AnimatedEntityModel<ExampleEntity> {
 
 	@Override
 	public ResourceLocation getAnimationFileLocation() {
-		return new ResourceLocation("tutorialmod", "animations/exampleentity.json");
+		return new ResourceLocation("tutorialmod", "animations/example_entity.json");
 	}
 }

@@ -34,7 +34,6 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.registries.ForgeRegistries;
 import software.bernie.geckolib.animation.builder.AnimationBuilder;
 import software.bernie.geckolib.animation.controller.AnimationController;
-import software.bernie.geckolib.animation.controller.AnimationController.IParticleListener;
 import software.bernie.geckolib.animation.controller.EntityAnimationController;
 import software.bernie.geckolib.entity.IAnimatedEntity;
 import software.bernie.geckolib.event.AnimationTestEvent;
@@ -148,12 +147,29 @@ public class ExampleEntity extends AnimalEntity implements IAnimatedEntity {
 
 	private <E extends ExampleEntity> boolean animationPredicate(AnimationTestEvent<E> event) {
 		if (event.isWalking()) {
-			controller.setAnimation(new AnimationBuilder().addAnimation("animation.turtywurty.move")
-					.addAnimation("animation.turtywurty.move", true));
+			controller.setAnimation(new AnimationBuilder().addAnimation("animation.tutorialmod.walk")
+					.addAnimation("animation.tutorialmod.walk", true));
 			return true;
 		} else {
-			controller.setAnimation(new AnimationBuilder().addAnimation("animation.turtywurty.idle", true));
+			controller.setAnimation(new AnimationBuilder().addAnimation("animation.tutorialmod.idle", true));
 			return true;
+		}
+	}
+
+	private <E extends Entity> SoundEvent soundListener(SoundKeyframeEvent<E> event) {
+		if (event.sound.equals("test")) {
+			return (SoundEvent) ForgeRegistries.SOUND_EVENTS.getValues().toArray()[rand
+					.nextInt(ForgeRegistries.SOUND_EVENTS.getValues().size())];
+		} else {
+			return getEntityAmbientSound();
+		}
+	}
+
+	private <E extends Entity> void particleListener(ParticleKeyFrameEvent<E> event) {
+		if (event.effect.equals("test")) {
+			event.getEntity().getEntityWorld().addParticle(new ColouredParticleData(0.2f, 0.7f, 0.5f, 1.0f),
+					event.getEntity().getPosX(), event.getEntity().getPosY(), event.getEntity().getPosZ(), 0.0f, 0.4f,
+					0.0f);
 		}
 	}
 
@@ -161,31 +177,5 @@ public class ExampleEntity extends AnimalEntity implements IAnimatedEntity {
 		manager.addAnimationController(controller);
 		controller.registerSoundListener(this::soundListener);
 		controller.registerParticleListener(this::particleListener);
-	}
-
-	private <E extends Entity> SoundEvent soundListener(SoundKeyframeEvent<E> event) {
-		if (event.sound.equals("moving")) {
-			return (SoundEvent) ForgeRegistries.SOUND_EVENTS.getValues().toArray()[rand
-					.nextInt(ForgeRegistries.SOUND_EVENTS.getValues().size())];
-		} else if (event.sound.equals("ambient")) {
-			return getEntityAmbientSound();
-		} else {
-			return null;
-		}
-	}
-
-	private <E extends Entity> IParticleListener particleListener(ParticleKeyFrameEvent<E> event) {
-		return new TestParticleListener();
-	}
-
-	private static class TestParticleListener implements IParticleListener {
-		@Override
-		public <E extends Entity> void summonParticle(ParticleKeyFrameEvent<E> event) {
-			if (event.effect.equals("test")) {
-				event.getEntity().getEntityWorld().addParticle(new ColouredParticleData(0.2f, 0.7f, 0.5f, 1.0f),
-						event.getEntity().getPosX(), event.getEntity().getPosY(), event.getEntity().getPosZ(), 0.0f,
-						0.4f, 0.0f);
-			}
-		}
 	}
 }
