@@ -2,6 +2,7 @@ package com.turtywurty.tutorialmod.init;
 
 import com.turtywurty.tutorialmod.TutorialMod;
 import com.turtywurty.tutorialmod.TutorialMod.TutorialItemGroup;
+import com.turtywurty.tutorialmod.objects.items.ModSpawnEggItem;
 import com.turtywurty.tutorialmod.objects.items.SpecialItem;
 import com.turtywurty.tutorialmod.util.enums.ModArmorMaterials;
 import com.turtywurty.tutorialmod.util.enums.ModItemTiers;
@@ -73,5 +74,8 @@ public class ItemInit {
 
 	public static final RegistryObject<Item> PROMISES_DISC = ITEMS.register("disc_promises",
 			() -> new MusicDiscItem(5, SoundInit.LAZY_PROMISES_MUSIC, //Instantiate MusicDiscItem directly
-					new Item.Properties().group(TutorialItemGroup.instance).maxStackSize(1).rarity(Rarity.RARE)));
+
+	public static final RegistryObject<ModSpawnEggItem> EXAMPLE_SPAWN_EGG = ITEMS.register("example_spawn_egg",
+			() -> new ModSpawnEggItem(ModEntityTypes.EXAMPLE_ENTITY, 0xFF329F, 0x16777119,
+					new Item.Properties().group(TutorialItemGroup.instance).maxStackSize(16)));
 }

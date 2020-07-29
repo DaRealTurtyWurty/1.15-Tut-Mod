@@ -16,10 +16,12 @@ import com.turtywurty.tutorialmod.init.ParticleInit;
 import com.turtywurty.tutorialmod.init.PotionInit;
 import com.turtywurty.tutorialmod.init.SoundInit;
 import com.turtywurty.tutorialmod.objects.blocks.ExampleCrop;
+import com.turtywurty.tutorialmod.objects.items.ModSpawnEggItem;
 import com.turtywurty.tutorialmod.world.gen.TutorialOreGen;
 
 import net.minecraft.block.ComposterBlock;
 import net.minecraft.block.FlowingFluidBlock;
+import net.minecraft.entity.EntityType;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
@@ -124,6 +126,11 @@ public class TutorialMod {
 	public static void loadCompleteEvent(FMLLoadCompleteEvent event) {
 		// This doesnt work anymore
 		// TutorialOreGen.generateOre();
+	}
+	
+	@SubscribeEvent
+	public static void onRegisterEntities(final RegistryEvent.Register<EntityType<?>> event) {
+		ModSpawnEggItem.initSpawnEggs();
 	}
 
 	public static class TutorialItemGroup extends ItemGroup {

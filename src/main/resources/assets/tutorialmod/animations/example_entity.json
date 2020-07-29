@@ -1,0 +1,143 @@
+{
+	"format_version": "1.8.0",
+	"animations": {
+		"animation.tutorialmod.walk": {
+			"animation_length": 0.8,
+			"bones": {
+				"RightBack": {
+					"rotation": {
+						"0.0": {
+							"vector": [0, 0, 0]
+						},
+						"0.2": {
+							"vector": [-20, 0, 0],
+							"easing": "easeInSine"
+						},
+						"0.4": {
+							"vector": [0, 0, 0],
+							"easing": "easeOutSine"
+						},
+						"0.6": {
+							"vector": [20, 0, 0],
+							"easing": "easeInOutSine"
+						},
+						"0.8": {
+							"vector": [0, 0, 0],
+							"easing": "easeInOutSine"
+						}
+					}
+				},
+				"LeftBack": {
+					"rotation": {
+						"0.0": {
+							"vector": [0, 0, 0]
+						},
+						"0.2": {
+							"vector": [20, 0, 0],
+							"easing": "easeInSine"
+						},
+						"0.4": {
+							"vector": [0, 0, 0],
+							"easing": "easeOutSine"
+						},
+						"0.6": {
+							"vector": [-20, 0, 0],
+							"easing": "easeInOutSine"
+						},
+						"0.8": {
+							"vector": [0, 0, 0],
+							"easing": "easeInOutSine"
+						}
+					}
+				},
+				"RightFront": {
+					"rotation": {
+						"0.0": {
+							"vector": [0, 0, 0]
+						},
+						"0.2": {
+							"vector": [-20, 0, 0],
+							"easing": "easeInSine"
+						},
+						"0.4": {
+							"vector": [0, 0, 0],
+							"easing": "easeOutSine"
+						},
+						"0.6": {
+							"vector": [20, 0, 0],
+							"easing": "easeInOutSine"
+						},
+						"0.8": {
+							"vector": [0, 0, 0],
+							"easing": "easeInOutSine"
+						}
+					}
+				},
+				"LeftFront": {
+					"rotation": {
+						"0.0": {
+							"vector": [0, 0, 0]
+						},
+						"0.2": {
+							"vector": [20, 0, 0],
+							"easing": "easeInSine"
+						},
+						"0.4": {
+							"vector": [0, 0, 0],
+							"easing": "easeOutSine"
+						},
+						"0.6": {
+							"vector": [-20, 0, 0],
+							"easing": "easeInOutSine"
+						},
+						"0.8": {
+							"vector": [0, 0, 0],
+							"easing": "easeInOutSine"
+						}
+					}
+				}
+			}
+		},
+		"animation.tutorialmod.idle": {
+			"animation_length": 1.04,
+			"bones": {
+				"Body": {
+					"position": {
+						"0.0": {
+							"vector": [0, 0, 0]
+						},
+						"0.52": {
+							"vector": [0, 2, 0]
+						},
+						"1.04": {
+							"vector": [0, 0, 0]
+						}
+					},
+					"scale": {
+						"0.0": {
+							"vector": [1, 1, 1]
+						},
+						"0.52": {
+							"vector": [1.2, 1.2, 1.2]
+						},
+						"1.04": {
+							"vector": [1, 1, 1]
+						}
+					}
+				}
+			},
+			"sound_effects": {
+				"0.52": {
+					"effect": "test"
+				}
+			},
+			"particle_effects": {
+				"0.52": {
+					"effect": "test",
+					"locator": "test",
+					"pre_effect_script": "test"
+				}
+			}
+		}
+	}
+}
