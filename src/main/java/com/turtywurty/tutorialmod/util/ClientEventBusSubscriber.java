@@ -3,6 +3,7 @@ package com.turtywurty.tutorialmod.util;
 import com.turtywurty.tutorialmod.TutorialMod;
 import com.turtywurty.tutorialmod.client.entity.render.ExampleEntityRender;
 import com.turtywurty.tutorialmod.client.gui.ExampleChestScreen;
+import com.turtywurty.tutorialmod.client.gui.ExampleFurnaceScreen;
 import com.turtywurty.tutorialmod.client.gui.ItemPedestalScreen;
 import com.turtywurty.tutorialmod.client.tileentity.renderer.ItemPedestalRenderer;
 import com.turtywurty.tutorialmod.init.BlockInit;
@@ -34,10 +35,15 @@ public class ClientEventBusSubscriber {
 	public static void clientSetup(FMLClientSetupEvent event) {
 		ScreenManager.registerFactory(ModContainerTypes.EXAMPLE_CHEST.get(), ExampleChestScreen::new);
 		ScreenManager.registerFactory(ModContainerTypes.ITEM_PEDESTAL.get(), ItemPedestalScreen::new);
+		ScreenManager.registerFactory(ModContainerTypes.EXAMPLE_FURNACE.get(), ExampleFurnaceScreen::new);
+
 		RenderTypeLookup.setRenderLayer(BlockInit.JAZZ_SAPLING.get(), RenderType.getCutout());
 		RenderTypeLookup.setRenderLayer(BlockInit.EXAMPLE_CROP.get(), RenderType.getCutout());
 		RenderTypeLookup.setRenderLayer(BlockInit.JAZZ_DOOR.get(), RenderType.getCutout());
+
 		RenderingRegistry.registerEntityRenderingHandler(ModEntityTypes.EXAMPLE_ENTITY.get(), ExampleEntityRender::new);
+
+		ClientRegistry.bindTileEntityRenderer(ModTileEntityTypes.ITEM_PEDESTAL.get(), ItemPedestalRenderer::new);
 
 		ItemInit.CRYSTAL.get().addPropertyOverride(new ResourceLocation(TutorialMod.MOD_ID, "count"),
 				new IItemPropertyGetter() {
@@ -58,8 +64,5 @@ public class ClientEventBusSubscriber {
 						}
 					}
 				});
-
-		ClientRegistry.bindTileEntityRenderer(ModTileEntityTypes.ITEM_PEDESTAL.get(),
-				ItemPedestalRenderer::new);
 	}
 }

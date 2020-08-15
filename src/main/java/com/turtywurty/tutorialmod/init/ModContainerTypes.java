@@ -2,6 +2,7 @@ package com.turtywurty.tutorialmod.init;
 
 import com.turtywurty.tutorialmod.TutorialMod;
 import com.turtywurty.tutorialmod.container.ExampleChestContainer;
+import com.turtywurty.tutorialmod.container.ExampleFurnaceContainer;
 import com.turtywurty.tutorialmod.container.ItemPedestalContainer;
 
 import net.minecraft.inventory.container.ContainerType;
@@ -20,4 +21,7 @@ public class ModContainerTypes {
 
 	public static final RegistryObject<ContainerType<ItemPedestalContainer>> ITEM_PEDESTAL = CONTAINER_TYPES
 			.register("item_pedestal", () -> IForgeContainerType.create(ItemPedestalContainer::new));
+
+	public static final RegistryObject<ContainerType<ExampleFurnaceContainer>> EXAMPLE_FURNACE = CONTAINER_TYPES
+			.register("example_furnace", () -> IForgeContainerType.create(ExampleFurnaceContainer::new));
 }

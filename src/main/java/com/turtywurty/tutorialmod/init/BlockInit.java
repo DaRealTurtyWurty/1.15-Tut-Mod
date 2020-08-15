@@ -4,6 +4,7 @@ import com.turtywurty.tutorialmod.TutorialMod;
 import com.turtywurty.tutorialmod.objects.blocks.BlockQuarry;
 import com.turtywurty.tutorialmod.objects.blocks.ExampleChestBlock;
 import com.turtywurty.tutorialmod.objects.blocks.ExampleCrop;
+import com.turtywurty.tutorialmod.objects.blocks.ExampleFurnaceBlock;
 import com.turtywurty.tutorialmod.objects.blocks.ItemPedestalBlock;
 import com.turtywurty.tutorialmod.objects.blocks.JazzDoor;
 import com.turtywurty.tutorialmod.objects.blocks.ModBeehiveBlock;
@@ -88,4 +89,7 @@ public class BlockInit {
 
 	public static final RegistryObject<Block> MOD_BEEHIVE = BLOCKS.register("mod_beehive",
 			() -> new ModBeehiveBlock(Block.Properties.from(Blocks.BEEHIVE)));
+
+	public static final RegistryObject<Block> EXAMPLE_FURNACE = BLOCKS.register("example_furnace",
+			() -> new ExampleFurnaceBlock(Block.Properties.from(Blocks.FURNACE)));
 }
