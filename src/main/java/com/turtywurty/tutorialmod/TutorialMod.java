@@ -14,6 +14,7 @@ import com.turtywurty.tutorialmod.init.ModEntityTypes;
 import com.turtywurty.tutorialmod.init.ModTileEntityTypes;
 import com.turtywurty.tutorialmod.init.ParticleInit;
 import com.turtywurty.tutorialmod.init.PotionInit;
+import com.turtywurty.tutorialmod.init.RecipeSerializerInit;
 import com.turtywurty.tutorialmod.init.SoundInit;
 import com.turtywurty.tutorialmod.objects.blocks.ExampleCrop;
 import com.turtywurty.tutorialmod.objects.items.ModSpawnEggItem;
@@ -64,6 +65,7 @@ public class TutorialMod {
 		PotionInit.POTION_EFFECTS.register(modEventBus);
 		EnchantmentInit.ENCHANTMENTS.register(modEventBus);
 		ItemInit.ITEMS.register(modEventBus);
+		RecipeSerializerInit.RECIPE_SERIALIZERS.register(modEventBus);
 		FluidInit.FLUIDS.register(modEventBus);
 		BlockInit.BLOCKS.register(modEventBus);
 		ModTileEntityTypes.TILE_ENTITY_TYPES.register(modEventBus);
@@ -131,7 +133,7 @@ public class TutorialMod {
 		// This doesnt work anymore
 		// TutorialOreGen.generateOre();
 	}
-	
+
 	@SubscribeEvent
 	public static void onRegisterEntities(final RegistryEvent.Register<EntityType<?>> event) {
 		ModSpawnEggItem.initSpawnEggs();

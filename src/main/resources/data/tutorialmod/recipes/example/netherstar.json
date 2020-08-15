@@ -1,0 +1,10 @@
+{
+	"type": "tutorialmod:example",
+	"output": {
+		"item": "minecraft:nether_star"
+	},
+	
+	"input": {
+		"item": "minecraft:gold_ore"
+	}
+}
