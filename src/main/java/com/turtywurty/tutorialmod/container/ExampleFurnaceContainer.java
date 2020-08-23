@@ -114,7 +114,7 @@ public class ExampleFurnaceContainer extends Container {
 
 	@OnlyIn(Dist.CLIENT)
 	public int getSmeltProgressionScaled() {
-		return this.currentSmeltTime.get() != 0 && this.currentSmeltTime.get() != 0
+		return this.currentSmeltTime.get() != 0 && this.tileEntity.maxSmeltTime != 0
 				? this.currentSmeltTime.get() * 24 / this.tileEntity.maxSmeltTime
 				: 0;
 	}
