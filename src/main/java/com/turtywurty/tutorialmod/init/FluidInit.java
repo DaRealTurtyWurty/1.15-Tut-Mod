@@ -37,7 +37,7 @@ public class FluidInit {
 			() -> MILK_FLUID.get(), () -> MILK_FLOWING.get(),
 			FluidAttributes.builder(MILK_STILL_RL, MILK_FLOWING_RL).density(5).luminosity(10).rarity(Rarity.RARE)
 					.sound(SoundEvents.ITEM_HONEY_BOTTLE_DRINK).overlay(MILK_OVERLAY_RL))
-							.block(() -> FluidInit.MILK_BLOCK.get());
+							.block(() -> FluidInit.MILK_BLOCK.get()).bucket(() -> ItemInit.EXAMPLE_BUCKET.get());
 
 	public static final RegistryObject<FlowingFluidBlock> MILK_BLOCK = BlockInit.BLOCKS.register("milk",
 			() -> new FlowingFluidBlock(() -> FluidInit.MILK_FLUID.get(), Block.Properties.create(Material.WATER)

@@ -12,6 +12,7 @@ import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.ArmorItem;
 import net.minecraft.item.AxeItem;
 import net.minecraft.item.BlockItem;
+import net.minecraft.item.BucketItem;
 import net.minecraft.item.Food;
 import net.minecraft.item.HoeItem;
 import net.minecraft.item.Item;
@@ -90,4 +91,8 @@ public class ItemInit {
 	public static final RegistryObject<ModSpawnEggItem> EXAMPLE_SPAWN_EGG = ITEMS.register("example_spawn_egg",
 			() -> new ModSpawnEggItem(ModEntityTypes.EXAMPLE_ENTITY, 0xFF329F, 0x16777119,
 					new Item.Properties().group(TutorialItemGroup.instance).maxStackSize(16)));
+
+	public static final RegistryObject<BucketItem> EXAMPLE_BUCKET = ITEMS.register("example_bucket",
+			() -> new BucketItem(() -> FluidInit.MILK_FLUID.get(),
+					new Item.Properties().group(TutorialItemGroup.instance).maxStackSize(1)));
 }

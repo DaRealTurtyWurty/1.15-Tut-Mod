@@ -44,5 +44,6 @@
 	"item.tutorialmod.disc_promises.desc": "ROFEU - Promises",
 	"item.tutorialmod.example_spawn_egg": "Example Entity Spawn Egg",
 	"block.tutorialmod.example_furnace": "Example Furnace",
-	"container.tutorialmod.example_furnace": "Example Furnace"
+	"container.tutorialmod.example_furnace": "Example Furnace",
+	"item.tutorialmod.example_bucket": "Example Bucket"
 }
