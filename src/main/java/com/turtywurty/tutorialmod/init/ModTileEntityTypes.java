@@ -4,7 +4,6 @@ import com.turtywurty.tutorialmod.TutorialMod;
 import com.turtywurty.tutorialmod.tileentity.ExampleChestTileEntity;
 import com.turtywurty.tutorialmod.tileentity.ExampleFurnaceTileEntity;
 import com.turtywurty.tutorialmod.tileentity.ItemPedestalTileEntity;
-import com.turtywurty.tutorialmod.tileentity.ModBeehiveTileEntity;
 import com.turtywurty.tutorialmod.tileentity.QuarryTileEntity;
 
 import net.minecraft.tileentity.TileEntityType;
@@ -27,10 +26,6 @@ public class ModTileEntityTypes {
 	public static final RegistryObject<TileEntityType<ItemPedestalTileEntity>> ITEM_PEDESTAL = TILE_ENTITY_TYPES
 			.register("item_pedestal", () -> TileEntityType.Builder
 					.create(ItemPedestalTileEntity::new, BlockInit.ITEM_PEDESTAL.get()).build(null));
-
-	public static final RegistryObject<TileEntityType<ModBeehiveTileEntity>> MOD_BEEHIVE = TILE_ENTITY_TYPES.register(
-			"mod_beehive",
-			() -> TileEntityType.Builder.create(ModBeehiveTileEntity::new, BlockInit.MOD_BEEHIVE.get()).build(null));
 
 	public static final RegistryObject<TileEntityType<ExampleFurnaceTileEntity>> EXAMPLE_FURNACE = TILE_ENTITY_TYPES
 			.register("example_furnace", () -> TileEntityType.Builder
