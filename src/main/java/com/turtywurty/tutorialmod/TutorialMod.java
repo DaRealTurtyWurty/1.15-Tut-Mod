@@ -82,9 +82,6 @@ public class TutorialMod {
 	public static void onRegisterItems(final RegistryEvent.Register<Item> event) {
 		final IForgeRegistry<Item> registry = event.getRegistry();
 
-		BlockInit.BLOCKS.getEntries().stream()
-				.filter(block -> !(block.get() instanceof ExampleCrop) && !(block.get() instanceof FlowingFluidBlock))
-				.map(RegistryObject::get).forEach(block -> {
 		BlockInit.BLOCKS.getEntries().stream().map(RegistryObject::get).filter(block -> !(block instanceof ExampleCrop)
 				&& !(block instanceof FlowingFluidBlock) && !(block instanceof PortalBlock)).forEach(block -> {
 					final Item.Properties properties = new Item.Properties().group(TutorialItemGroup.instance);
