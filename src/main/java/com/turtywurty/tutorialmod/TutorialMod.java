@@ -7,6 +7,7 @@ import com.turtywurty.tutorialmod.init.BiomeInit;
 import com.turtywurty.tutorialmod.init.BlockInit;
 import com.turtywurty.tutorialmod.init.DimensionInit;
 import com.turtywurty.tutorialmod.init.EnchantmentInit;
+import com.turtywurty.tutorialmod.init.FeatureInit;
 import com.turtywurty.tutorialmod.init.FluidInit;
 import com.turtywurty.tutorialmod.init.ItemInit;
 import com.turtywurty.tutorialmod.init.ModContainerTypes;
@@ -17,7 +18,12 @@ import com.turtywurty.tutorialmod.init.PotionInit;
 import com.turtywurty.tutorialmod.init.RecipeSerializerInit;
 import com.turtywurty.tutorialmod.init.SoundInit;
 import com.turtywurty.tutorialmod.objects.blocks.ExampleCrop;
+import com.turtywurty.tutorialmod.objects.blocks.ModTorchBlock;
+import com.turtywurty.tutorialmod.objects.blocks.ModWallTorchBlock;
 import com.turtywurty.tutorialmod.objects.items.ModSpawnEggItem;
+import com.turtywurty.tutorialmod.portal.PortalBlockInit;
+import com.turtywurty.tutorialmod.portal.PortalBlockInit.PortalBlock;
+import com.turtywurty.tutorialmod.world.gen.StructureGen;
 import com.turtywurty.tutorialmod.world.gen.TutorialOreGen;
 
 import net.minecraft.block.ComposterBlock;
@@ -73,6 +79,9 @@ public class TutorialMod {
 		ModEntityTypes.ENTITY_TYPES.register(modEventBus);
 		BiomeInit.BIOMES.register(modEventBus);
 		DimensionInit.MOD_DIMENSIONS.register(modEventBus);
+		FeatureInit.FEATURES.register(modEventBus);
+
+		PortalBlockInit.BLOCKS.register(modEventBus);
 
 		instance = this;
 		MinecraftForge.EVENT_BUS.register(this);
@@ -82,8 +91,11 @@ public class TutorialMod {
 	public static void onRegisterItems(final RegistryEvent.Register<Item> event) {
 		final IForgeRegistry<Item> registry = event.getRegistry();
 
-		BlockInit.BLOCKS.getEntries().stream().map(RegistryObject::get).filter(block -> !(block instanceof ExampleCrop)
-				&& !(block instanceof FlowingFluidBlock) && !(block instanceof PortalBlock)).forEach(block -> {
+		BlockInit.BLOCKS.getEntries().stream().map(RegistryObject::get)
+				.filter(block -> !(block instanceof ExampleCrop) && !(block instanceof FlowingFluidBlock)
+						&& !(block instanceof PortalBlock) && !(block instanceof ModWallTorchBlock)
+						&& !(block instanceof ModTorchBlock))
+				.forEach(block -> {
 					final Item.Properties properties = new Item.Properties().group(TutorialItemGroup.instance);
 					final BlockItem blockItem = new BlockItem(block, properties);
 					blockItem.setRegistryName(block.getRegistryName());
@@ -106,6 +118,7 @@ public class TutorialMod {
 			ComposterBlock.registerCompostable(0.4f, ItemInit.SEED_ITEM.get());
 		});
 		DeferredWorkQueue.runLater(TutorialOreGen::generateOre);
+		DeferredWorkQueue.runLater(StructureGen::generateStructures);
 		/*
 		 * DeferredWorkQueue.runLater(() -> { for (Biome biome : ForgeRegistries.BIOMES)
 		 * { if (biome instanceof ExampleBiome) {

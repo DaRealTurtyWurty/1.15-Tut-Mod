@@ -45,5 +45,10 @@
 	"item.tutorialmod.example_spawn_egg": "Example Entity Spawn Egg",
 	"block.tutorialmod.example_furnace": "Example Furnace",
 	"container.tutorialmod.example_furnace": "Example Furnace",
-	"item.tutorialmod.example_bucket": "Example Bucket"
+	"item.tutorialmod.example_bucket": "Example Bucket",
+	"block.tutorialmod.example_fence_gate": "Example Fence Gate",
+	"block.tutorialmod.example_wall": "Example Wall",
+	"block.tutorialmod.example_ladder": "Example Ladder",
+	"block.tutorialmod.example_torch": "Example Torch",
+	"block.tutorialmod.example_wall_torch": "Example Wall Torch"
 }

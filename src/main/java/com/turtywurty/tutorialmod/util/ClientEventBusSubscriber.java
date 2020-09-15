@@ -40,6 +40,9 @@ public class ClientEventBusSubscriber {
 		RenderTypeLookup.setRenderLayer(BlockInit.JAZZ_SAPLING.get(), RenderType.getCutout());
 		RenderTypeLookup.setRenderLayer(BlockInit.EXAMPLE_CROP.get(), RenderType.getCutout());
 		RenderTypeLookup.setRenderLayer(BlockInit.JAZZ_DOOR.get(), RenderType.getCutout());
+		RenderTypeLookup.setRenderLayer(BlockInit.EXAMPLE_TORCH.get(), RenderType.getCutout());
+		RenderTypeLookup.setRenderLayer(BlockInit.EXAMPLE_WALL_TORCH.get(), RenderType.getCutout());
+		RenderTypeLookup.setRenderLayer(BlockInit.EXAMPLE_LADDER.get(), RenderType.getCutout());
 
 		RenderingRegistry.registerEntityRenderingHandler(ModEntityTypes.EXAMPLE_ENTITY.get(), ExampleEntityRender::new);
 

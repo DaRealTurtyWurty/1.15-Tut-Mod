@@ -1,7 +1,5 @@
 package com.turtywurty.tutorialmod.world.biomes;
 
-import com.turtywurty.tutorialmod.init.ModBiomeFeatures;
-
 import net.minecraft.entity.EntityClassification;
 import net.minecraft.entity.EntityType;
 import net.minecraft.world.biome.Biome;
@@ -25,9 +23,7 @@ public class ExampleBiome extends Biome {
 				Biome.createCarver(WorldCarver.CAVE, new ProbabilityConfig(0.14285715F)));
 		this.addCarver(GenerationStage.Carving.AIR,
 				Biome.createCarver(WorldCarver.HELL_CAVE, new ProbabilityConfig(0.02F)));
-		/*this.addFeature(GenerationStage.Decoration.UNDERGROUND_DECORATION,
-				Feature.FOSSIL.withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG)
-						.withPlacement(Placement.CHANCE_PASSTHROUGH.configure(new ChanceConfig(128))));*/
+
 		this.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION,
 				Feature.RANDOM_BOOLEAN_SELECTOR
 						.withConfiguration(new TwoFeatureChoiceConfig(
@@ -40,21 +36,21 @@ public class ExampleBiome extends Biome {
 		this.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION,
 				Feature.RANDOM_PATCH.withConfiguration(DefaultBiomeFeatures.RED_MUSHROOM_CONFIG).withPlacement(
 						Placement.COUNT_CHANCE_HEIGHTMAP_DOUBLE.configure(new HeightWithChanceConfig(1, 0.125F))));
-		//this.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION,
-		//		Feature.NORMAL_TREE.withConfiguration(JazzTree.JAZZ_TREE_CONFIG).withPlacement(
-		//				Placement.COUNT_EXTRA_HEIGHTMAP.configure(new AtSurfaceWithExtraConfig(7, 0.1f, 1))));
+		// this.addFeature(GenerationStage.Decoration.VEGETAL_DECORATION,
+		// Feature.NORMAL_TREE.withConfiguration(JazzTree.JAZZ_TREE_CONFIG).withPlacement(
+		// Placement.COUNT_EXTRA_HEIGHTMAP.configure(new AtSurfaceWithExtraConfig(7,
+		// 0.1f, 1))));
 
 		DefaultBiomeFeatures.addOres(this);
 		DefaultBiomeFeatures.addExtraGoldOre(this);
 		DefaultBiomeFeatures.addExtraEmeraldOre(this);
-		ModBiomeFeatures.addExampleFeature(this, 10);
 	}
-	
+
 	@Override
 	public int getGrassColor(double posX, double posZ) {
 		return 0xFF0000;
 	}
-	
+
 	@Override
 	public int getFoliageColor() {
 		return 0xFF0000;

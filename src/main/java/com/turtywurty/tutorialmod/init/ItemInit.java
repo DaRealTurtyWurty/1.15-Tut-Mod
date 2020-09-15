@@ -20,6 +20,7 @@ import net.minecraft.item.PickaxeItem;
 import net.minecraft.item.Rarity;
 import net.minecraft.item.ShovelItem;
 import net.minecraft.item.SwordItem;
+import net.minecraft.item.WallOrFloorItem;
 import net.minecraft.potion.EffectInstance;
 import net.minecraft.potion.Effects;
 import net.minecraftforge.fml.RegistryObject;
@@ -95,4 +96,8 @@ public class ItemInit {
 	public static final RegistryObject<BucketItem> EXAMPLE_BUCKET = ITEMS.register("example_bucket",
 			() -> new BucketItem(() -> FluidInit.MILK_FLUID.get(),
 					new Item.Properties().group(TutorialItemGroup.instance).maxStackSize(1)));
+
+	public static final RegistryObject<WallOrFloorItem> EXAMPLE_TORCH = ITEMS.register("example_torch",
+			() -> new WallOrFloorItem(BlockInit.EXAMPLE_TORCH.get(), BlockInit.EXAMPLE_WALL_TORCH.get(),
+					new Item.Properties().group(TutorialItemGroup.instance)));
 }

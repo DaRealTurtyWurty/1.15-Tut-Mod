@@ -7,8 +7,11 @@ import com.turtywurty.tutorialmod.objects.blocks.ExampleCrop;
 import com.turtywurty.tutorialmod.objects.blocks.ExampleFurnaceBlock;
 import com.turtywurty.tutorialmod.objects.blocks.ItemPedestalBlock;
 import com.turtywurty.tutorialmod.objects.blocks.JazzDoor;
+import com.turtywurty.tutorialmod.objects.blocks.ModLadderBlock;
 import com.turtywurty.tutorialmod.objects.blocks.ModPressurePlateBlock;
 import com.turtywurty.tutorialmod.objects.blocks.ModSaplingBlock;
+import com.turtywurty.tutorialmod.objects.blocks.ModTorchBlock;
+import com.turtywurty.tutorialmod.objects.blocks.ModWallTorchBlock;
 import com.turtywurty.tutorialmod.objects.blocks.ModWoodButtonBlock;
 import com.turtywurty.tutorialmod.objects.blocks.SpecalBlock;
 import com.turtywurty.tutorialmod.world.feature.JazzTree;
@@ -16,12 +19,14 @@ import com.turtywurty.tutorialmod.world.feature.JazzTree;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.FenceBlock;
+import net.minecraft.block.FenceGateBlock;
 import net.minecraft.block.LeavesBlock;
 import net.minecraft.block.LogBlock;
 import net.minecraft.block.PressurePlateBlock.Sensitivity;
 import net.minecraft.block.SlabBlock;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.StairsBlock;
+import net.minecraft.block.WallBlock;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.material.MaterialColor;
 import net.minecraftforge.common.ToolType;
@@ -88,4 +93,19 @@ public class BlockInit {
 
 	public static final RegistryObject<Block> EXAMPLE_FURNACE = BLOCKS.register("example_furnace",
 			() -> new ExampleFurnaceBlock(Block.Properties.from(Blocks.FURNACE)));
+
+	public static final RegistryObject<FenceGateBlock> EXAMPLE_FENCE_GATE = BLOCKS.register("example_fence_gate",
+			() -> new FenceGateBlock(Block.Properties.from(Blocks.ACACIA_FENCE_GATE)));
+
+	public static final RegistryObject<WallBlock> EXAMPLE_WALL = BLOCKS.register("example_wall",
+			() -> new WallBlock(Block.Properties.from(Blocks.BRICK_WALL)));
+
+	public static final RegistryObject<ModTorchBlock> EXAMPLE_TORCH = BLOCKS.register("example_torch",
+			() -> new ModTorchBlock(Block.Properties.from(Blocks.TORCH)));
+
+	public static final RegistryObject<ModWallTorchBlock> EXAMPLE_WALL_TORCH = BLOCKS.register("example_wall_torch",
+			() -> new ModWallTorchBlock(Block.Properties.from(Blocks.WALL_TORCH)));
+
+	public static final RegistryObject<ModLadderBlock> EXAMPLE_LADDER = BLOCKS.register("example_ladder",
+			() -> new ModLadderBlock(Block.Properties.from(Blocks.LADDER)));
 }
