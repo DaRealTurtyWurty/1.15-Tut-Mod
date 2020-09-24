@@ -74,6 +74,7 @@ public class ItemInit {
 
 	public static final RegistryObject<Item> PROMISES_DISC = ITEMS.register("disc_promises",
 			() -> new MusicDiscItem(5, SoundInit.LAZY_PROMISES_MUSIC, //Instantiate MusicDiscItem directly
+			       new Item.Properties().group(TutorialItemGroup.instance).maxStackSize(1).rarity(Rarity.RARE)));
 
 	public static final RegistryObject<ModSpawnEggItem> EXAMPLE_SPAWN_EGG = ITEMS.register("example_spawn_egg",
 			() -> new ModSpawnEggItem(ModEntityTypes.EXAMPLE_ENTITY, 0xFF329F, 0x16777119,
