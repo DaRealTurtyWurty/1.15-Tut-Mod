@@ -100,4 +100,7 @@ public class ItemInit {
 	public static final RegistryObject<WallOrFloorItem> EXAMPLE_TORCH = ITEMS.register("example_torch",
 			() -> new WallOrFloorItem(BlockInit.EXAMPLE_TORCH.get(), BlockInit.EXAMPLE_WALL_TORCH.get(),
 					new Item.Properties().group(TutorialItemGroup.instance)));
+
+	public static final RegistryObject<Item> CUSTOM_ITEM = ITEMS.register("custom_item",
+			() -> new Item(new Item.Properties().group(TutorialItemGroup.instance)));
 }

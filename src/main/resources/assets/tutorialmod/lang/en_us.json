@@ -50,5 +50,6 @@
 	"block.tutorialmod.example_wall": "Example Wall",
 	"block.tutorialmod.example_ladder": "Example Ladder",
 	"block.tutorialmod.example_torch": "Example Torch",
-	"block.tutorialmod.example_wall_torch": "Example Wall Torch"
+	"block.tutorialmod.example_wall_torch": "Example Wall Torch",
+	"item.tutorialmod.custom_item": "Custom Item"
 }
